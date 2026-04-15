@@ -1,59 +1,61 @@
-# Design System Specification: Project Jade
+# Design System Specification: Sikuani
 
-Este documento sirve como la única fuente de verdad para la conversión de wireframes de baja fidelidad a mockups de alta fidelidad.
+Este documento define la identidad visual de Sikuani, dividida en dos experiencias sensoriales: **Organic Soul** (Día/Luz) y **Nocturnal** (Noche/Oscuridad).
 
-## 1. Paleta de Colores (Brand Colors)
-
-### Colores Principales
-* **Primary:** `#368062` (Verde Bosque) - Usado para acciones principales, botones primarios y acentos de marca.
-* **Secondary:** `#9AAD8C` (Verde Musgo) - Usado para estados secundarios, fondos suaves o elementos de apoyo.
-* **Tertiary:** `#F7DD16` (Amarillo Vibrante) - Usado para destacar elementos clave, alertas de atención o iconos específicos (ej. botones de edición).
-* **Neutral:** `#EEEEE9` (Hueso/Gris Cálido) - Color de fondo principal para superficies y contenedores.
-
-### Escalas de Grises y Funcionales
-* **Surface:** `#FFFFFF` (Blanco puro para cards internas).
-* **Inverted:** `#222222` (Para texto oscuro o botones contrastados).
-* **Error/Danger:** `#B22222` (Rojo oscuro, como se ve en el icono de papelera).
+## 1. Creative North Star
+*   **Organic Soul:** La esencia de la selva bajo el sol. Calidez, materiales naturales y serenidad biomimética.
+*   **Nocturnal:** El misterio de la selva nocturna. Profundidad, contrastes esmeralda y una elegancia salvaje.
 
 ---
 
-## 2. Tipografía (Typography)
+## 2. Paleta de Colores
 
-| Rol | Fuente | Estilo | Uso Sugerido |
-| :--- | :--- | :--- | :--- |
-| **Headlines** | `DM Serif Display` | Serif / Regular | Títulos de sección, Hero titles, Títulos de tarjetas grandes. |
-| **Body** | `Be Vietnam Pro` | Sans Serif / Regular | Párrafos, descripciones, contenido de lectura larga. |
-| **Labels/UI** | `Be Vietnam Pro` | Sans Serif / Medium | Botones, inputs, etiquetas de navegación, tooltips. |
+### Sikuani Organic Soul (Light Mode)
+*   **Background:** `#F8FAF9` (Blanco Orgánico)
+*   **Primary:** `#368062` (Verde Bosque)
+*   **Accent:** `#F7DD16` (Amarillo Sol) - Usado para CTAs principales y acentos destacados.
+*   **Surface:** `#FFFFFF`
+*   **On Surface:** `#1A1C1C`
 
-> **Nota:** Mantener un tracking (espaciado entre letras) estándar. Para `DM Serif Display`, asegurar que el tamaño sea lo suficientemente grande para apreciar el contraste del trazo.
-
----
-
-## 3. Componentes y Estilos Visuales
-
-### Botones (Buttons)
-* **Primary:** Fondo `#368062`, texto `#FFFFFF`, border-radius: `8px`.
-* **Secondary:** Fondo `#9AAD8C` o neutro, texto `#222222`.
-* **Outlined:** Borde `#222222` (1px), sin fondo, texto `#222222`.
-* **Inverted:** Fondo `#222222`, texto `#FFFFFF`.
-
-### Inputs y Búsqueda
-* **Search Bar:** Fondo `#EEEEE9` con borde sutil o sombra interna muy suave. Iconografía en `#222222`.
-* **Border Radius:** General de `12px` para contenedores y `8px` para elementos de interacción.
-
-### Navegación
-* **Bottom Nav / Sidebar:** Fondo claro (`#EEEEE9` o `#FFFFFF`).
-* **Active State:** Icono dentro de un círculo `#368062` con glifo en blanco.
+### Sikuani Nocturnal (Dark Mode)
+*   **Background:** `#0A1414` (Verde Abisal)
+*   **Primary:** `#00FF88` (Esmeralda Neón) - Usado para botones y estados activos.
+*   **Accent:** `#FFFFFF` (Blanco Puro)
+*   **Surface:** `#142020`
+*   **On Surface:** `#E2E2E2`
 
 ---
 
-## 4. Instrucciones de Aplicación para el Agente
+## 3. Tipografía (Editorial Mix)
 
-Al procesar los wireframes de Figma, aplica las siguientes reglas:
-
-1.  **Jerarquía Visual:** Usa `DM Serif Display` únicamente para encabezados. No la uses en botones ni menús de navegación.
-2.  **Espaciado:** Utiliza un sistema de rejilla basado en **8px** (8, 16, 24, 32, 48).
-3.  **Contraste:** Los iconos de acción (como editar) deben usar el color **Tertiary** `#F7DD16` sobre fondos oscuros o claros según la visibilidad. El icono de borrar siempre en el tono rojo especificado.
-4.  **Cards:** Las tarjetas deben tener esquinas redondeadas (`16px`) y un borde muy fino o una sombra `0px 4px 12px rgba(0,0,0,0.05)`.
+| Rol | Fuente | Uso Sugerido |
+| :--- | :--- | :--- |
+| **Headlines** | `DM Serif Display` | Títulos de gran formato, autoridad y elegancia. |
+| **Body & UI** | `Be Vietnam Pro` | Textos de lectura, botones y etiquetas técnicas. |
 
 ---
+
+## 4. Componentes y Estilos Visuales
+
+### Botones y Acción
+*   **Border Radius:** `12px` (Suavizado orgánico).
+*   **Primary (Organic Soul):** Fondo `#F7DD16`, texto `#000000`.
+*   **Primary (Nocturnal):** Fondo `#00FF88`, texto `#000000`.
+*   **Ghost/Outline:** Borde sutil, texto en color primario de la respectiva versión.
+
+### Tarjetas (Cards)
+*   Esquinas redondeadas a `16px`.
+*   Sombra muy suave (Oclusión ambiental) en modo claro.
+*   Bordes de cristal (Glassmorphism) en modo oscuro.
+
+### Acentos visuales
+*   Línea de acento de `2px` debajo de los encabezados de sección.
+    *   Organic Soul: `#F7DD16`
+    *   Nocturnal: `#00FF88`
+
+---
+
+## 5. Instrucciones de Aplicación
+1.  **Imágenes:** En Organic Soul, usar imágenes con luz natural y follaje verde. En Nocturnal, usar imágenes de baja exposición, tonos fríos y fauna exótica (ej. el jaguar).
+2.  **Espaciado:** Sistema basado en **8px**.
+3.  **Transiciones:** Los cambios entre estados deben ser fluidos para reflejar el ritmo de la naturaleza.

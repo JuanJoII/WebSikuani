@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+@theme {
+  --color-sikuani-bg: var(--sikuani-bg);
+  --color-sikuani-primary: var(--sikuani-primary);
+  --color-sikuani-accent: var(--sikuani-accent);
+  --color-sikuani-surface: var(--sikuani-surface);
+  --color-sikuani-on-surface: var(--sikuani-on-surface);
+
+  --font-serif: "DM Serif Display", serif;
+  --font-sans: "Be Vietnam Pro", sans-serif;
+
+  --radius-sikuani-org: 12px;
+  --radius-sikuani-card: 16px;
+}
+
+:root {
+  --sikuani-bg: #F8FAF9;
+  --sikuani-primary: #368062;
+  --sikuani-accent: #F7DD16;
+  --sikuani-surface: #FFFFFF;
+  --sikuani-on-surface: #1A1C1C;
+  --color-scheme: light;
+}
+
+.dark {
+  --sikuani-bg: #0A1414;
+  --sikuani-primary: #00FF88;
+  --sikuani-accent: #FFFFFF;
+  --sikuani-surface: #142020;
+  --sikuani-on-surface: #E2E2E2;
+  --color-scheme: dark;
+}
+
+@layer base {
+  :root {
+    background-color: var(--sikuani-bg);
+    color: var(--sikuani-on-surface);
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--sikuani-bg);
+    color: var(--sikuani-on-surface);
+    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+  }
+}
+
+/* Estilos específicos para el Footer para evitar colisiones */
+.sikuani-footer {
+  background-color: #368062; /* Verde Bosque fijo para modo claro */
+  color: #FFFFFF !important;
+}
+
+.dark .sikuani-footer {
+  background-color: #142020; /* Superficie oscura para modo oscuro */
+  color: #E2E2E2 !important;
+}
+
+.sikuani-footer a, 
+.sikuani-footer p, 
+.sikuani-footer h4, 
+.sikuani-footer span {
+  color: inherit;
+}

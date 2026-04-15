@@ -1,0 +1,141 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+
+const content = {
+	light: {
+		hero: {
+			tag: "Propósito Humano",
+			title: "Innovación con Propósito Humano",
+			description: "En Sikuani Rend, transformamos la complejidad técnica en soluciones intuitivas que potencian el crecimiento de las empresas, manteniendo siempre el foco en las personas que las construyen."
+		},
+		mission: {
+			title: "Nuestra Misión",
+			text: "Democratizar el acceso a tecnología de alto nivel, permitiendo que organizaciones de cualquier escala operen con la eficiencia y seguridad de los líderes globales."
+		},
+		values: [
+			{ title: "Transparencia Radical", desc: "Comunicación honesta y procesos abiertos en cada etapa del desarrollo." },
+			{ title: "Excelencia Técnica", desc: "No nos conformamos con lo que funciona; buscamos lo que sobresale." },
+			{ title: "Empatía Sistémica", desc: "Entendemos el impacto de nuestro código en la vida real de los usuarios." }
+		]
+	},
+	dark: {
+		hero: {
+			tag: "Ingeniería de Precisión",
+			title: "Forjando el Futuro Digital",
+			description: "Combinamos ingeniería de precisión con una visión audaz para crear infraestructuras digitales resilientes. Somos el motor invisible detrás de las plataformas más robustas del mercado."
+		},
+		mission: {
+			title: "Nuestra Misión",
+			text: "Construir la columna vertebral de la economía digital, garantizando escalabilidad y rendimiento extremo en entornos de alta demanda."
+		},
+		values: [
+			{ title: "Rigor Algorítmico", desc: "Cada línea de código es sometida a pruebas de estrés y validación formal." },
+			{ title: "Escalabilidad Infinita", desc: "Sistemas diseñados para crecer sin fricción, desde startups hasta enterprise." },
+			{ title: "Seguridad de Grado Militar", desc: "Protección proactiva contra amenazas en un panorama digital hostil." }
+		]
+	}
+};
+---
+
+<Layout title="Sobre Nosotros - Sikuani Rend">
+	<Navbar />
+
+	<main class="transition-colors duration-700">
+		<!-- Hero Section -->
+		<section class="py-32 bg-sikuani-bg relative overflow-hidden">
+			<!-- Visual Accents -->
+			<div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+				<div class="absolute top-[-10%] right-[-5%] w-96 h-96 bg-sikuani-primary rounded-full blur-[120px] dark:hidden"></div>
+				<div class="absolute bottom-[-10%] left-[-5%] w-96 h-96 bg-sikuani-accent rounded-full blur-[100px] dark:hidden"></div>
+				<div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20 hidden dark:block"></div>
+			</div>
+
+			<div class="container mx-auto px-4 relative z-10 text-center max-w-5xl">
+				<span class="inline-block py-1 px-4 rounded-full bg-sikuani-primary/10 text-sikuani-primary font-sans font-bold text-sm mb-8 tracking-widest uppercase">
+					<span class="block dark:hidden">{content.light.hero.tag}</span>
+					<span class="hidden dark:block">{content.dark.hero.tag}</span>
+				</span>
+				
+				<h1 class="text-6xl md:text-8xl font-serif text-sikuani-primary mb-8 leading-tight tracking-tight">
+					<span class="block dark:hidden">{content.light.hero.title}</span>
+					<span class="hidden dark:block">{content.dark.hero.title}</span>
+				</h1>
+				
+				<p class="text-xl md:text-2xl text-sikuani-on-surface/80 font-sans leading-relaxed max-w-3xl mx-auto">
+					<span class="block dark:hidden">{content.light.hero.description}</span>
+					<span class="hidden dark:block">{content.dark.hero.description}</span>
+				</p>
+			</div>
+		</section>
+
+		<!-- Mission Section -->
+		<section class="py-32 bg-sikuani-surface border-y border-sikuani-primary/5">
+			<div class="container mx-auto px-4">
+				<div class="flex flex-col lg:flex-row items-center gap-16">
+					<div class="w-full lg:w-1/2">
+						<SectionHeader 
+							title={content.light.mission.title} 
+							subtitle="Nuestra Razón de Ser"
+						/>
+						<p class="text-2xl md:text-3xl font-serif text-sikuani-on-surface leading-snug italic">
+							<span class="block dark:hidden">"{content.light.mission.text}"</span>
+							<span class="hidden dark:block">"{content.dark.mission.text}"</span>
+						</p>
+					</div>
+					<div class="w-full lg:w-1/2">
+						<div class="aspect-video rounded-sikuani-card overflow-hidden bg-sikuani-bg relative border border-sikuani-primary/10 shadow-xl">
+							<img src="https://images.unsplash.com/photo-1522071823991-b1ae5e6a3048?auto=format&fit=crop&q=80&w=1200" alt="Team" class="w-full h-full object-cover dark:grayscale transition-all duration-700" />
+							<div class="absolute inset-0 bg-sikuani-primary/10 mix-blend-multiply"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Values Grid -->
+		<section class="py-32 bg-sikuani-bg">
+			<div class="container mx-auto px-4">
+				<SectionHeader title="Nuestros Valores" centered={true} />
+				
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+					{content.light.values.map((v, i) => (
+						<div class="p-12 rounded-sikuani-card bg-sikuani-surface border border-sikuani-primary/5 hover:border-sikuani-primary/20 transition-all duration-500 block dark:hidden group">
+							<div class="h-12 w-12 rounded-sikuani-org bg-sikuani-accent flex items-center justify-center text-black font-bold mb-8 group-hover:scale-110 transition-transform">0{i+1}</div>
+							<h3 class="text-2xl font-serif mb-4 text-sikuani-primary">{v.title}</h3>
+							<p class="text-sikuani-on-surface/70 font-sans leading-relaxed">{v.desc}</p>
+						</div>
+					))}
+					{content.dark.values.map((v, i) => (
+						<div class="p-12 rounded-sikuani-card bg-sikuani-surface border border-sikuani-primary/10 hover:border-sikuani-primary/40 transition-all duration-500 hidden dark:block group">
+							<div class="h-12 w-12 rounded-sikuani-org bg-sikuani-primary flex items-center justify-center text-black font-bold mb-8 group-hover:bg-white transition-colors">0{i+1}</div>
+							<h3 class="text-2xl font-serif mb-4 text-sikuani-primary">{v.title}</h3>
+							<p class="text-sikuani-on-surface/70 font-sans leading-relaxed">{v.desc}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<!-- Team Section teaser -->
+		<section class="py-32 bg-sikuani-surface relative overflow-hidden">
+			<div class="container mx-auto px-4 text-center">
+				<SectionHeader title="El Colectivo Sikuani" subtitle="Talento Humano" centered={true} />
+				<p class="text-xl text-sikuani-on-surface/80 max-w-3xl mx-auto mb-16 font-sans">
+					Un colectivo diverso de ingenieros, diseñadores y estrategas unidos por la curiosidad y el rigor técnico.
+				</p>
+				<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+					{[1, 2, 3, 4].map(i => (
+						<div class="aspect-square rounded-full bg-sikuani-bg border-4 border-sikuani-primary/10 overflow-hidden grayscale hover:grayscale-0 transition-all duration-500">
+							<img src={`https://i.pravatar.cc/300?img=${i+10}`} alt="Team Member" />
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<Footer />
+</Layout>

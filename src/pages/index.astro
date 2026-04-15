@@ -1,11 +1,209 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import Button from '../components/Button.astro';
+import SectionHeader from '../components/SectionHeader.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// Datos duales según el diseño de Stitch
+const content = {
+	light: {
+		hero: {
+			tag: "Ecohotel",
+			title: "Sikuani Ecohotel",
+			description: "Donde la arquitectura de lujo se funde con la serenidad del bosque virgen. Un refugio consciente para el alma.",
+			primaryBtn: "Explorar Refugio",
+			secondaryBtn: "Nuestra Historia"
+		},
+		testimonials: [
+			{ name: "Alejandro M.", text: "Una experiencia transformadora. La conexión con la naturaleza es absoluta y el diseño impecable de las cabañas supera todas mis expectativas.", role: "Huésped" },
+			{ name: "Elena R.", text: "Sikuani no es solo un hotel, es un santuario. La paz que se respira aquí es inigualable. El servicio es cálido y el diseño es simplemente hermoso.", role: "Huésped" },
+			{ name: "Javier H.", text: "Increíble como han logrado integrar la arquitectura con el entorno. Cada detalle está pensado para el confort y el respeto por la naturaleza.", role: "Huésped" }
+		]
+	},
+	dark: {
+		hero: {
+			tag: "Verdant Nocturne",
+			title: "El Santuario del Verdant Nocturne",
+			description: "Donde la arquitectura de lujo se funde con el susurro eterno de la selva virgen. Un refugio diseñado para el alma.",
+			primaryBtn: "Reservar Ahora",
+			secondaryBtn: "Ver Experiencias"
+		},
+		testimonials: [
+			{ name: "elena martinez", text: "Una experiencia que redefine el lujo. Vivir rodeada de los sonidos de la selva es algo que nunca olvidaré. El diseño es simplemente espectacular.", role: "Huésped" },
+			{ name: "pablo monti", text: "Única, vibrante, juvenil. Impresionante la integración entre la estética Sikuani y el cuidado de nuestro futuro de la manera más consciente.", role: "Huésped" },
+			{ name: "sofia rizzo", text: "Descubrí una paz que no sabía que necesitaba. Gracias al personal excepcional y la atención al detalle en cada rincón de este paraíso.", role: "Huésped" }
+		],
+		experiences: [
+			{ title: "Rituales de Bienestar", icon: "✨" },
+			{ title: "Cata de Autor", icon: "🍷" },
+			{ title: "Yoga al Aire", icon: "🧘" },
+			{ title: "Inmersión Natural", icon: "🌿" }
+		]
+	}
+};
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Sikuani - 1:1 High Fidelity">
+	<Navbar />
+
+	<main>
+		<!-- Hero Section -->
+		<section class="relative min-h-screen flex items-center pt-20 pb-32 overflow-hidden bg-sikuani-bg transition-colors duration-700">
+			<!-- Background Image Placeholder based on Stitch -->
+			<div class="absolute inset-0 z-0">
+				<!-- Light Image: Cabin in woods -->
+				<div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1510797215324-95aa89f297a6?auto=format&fit=crop&q=80&w=2560')] bg-cover bg-center opacity-20 dark:opacity-0 transition-opacity duration-700"></div>
+				<!-- Dark Image: Jungle/Tiger vibe -->
+				<div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1549480017-d76466a4b7e8?auto=format&fit=crop&q=80&w=2560')] bg-cover bg-center opacity-0 dark:opacity-30 transition-opacity duration-700"></div>
+				<div class="absolute inset-0 bg-gradient-to-b from-sikuani-bg/20 via-sikuani-bg to-sikuani-bg"></div>
+			</div>
+			
+			<div class="container mx-auto px-4 relative z-10">
+				<div class="max-w-4xl">
+					<span class="inline-block py-1 px-4 rounded-full bg-sikuani-primary/10 text-sikuani-primary font-sans font-bold text-sm mb-8 tracking-widest uppercase">
+						<span class="block dark:hidden">{content.light.hero.tag}</span>
+						<span class="hidden dark:block">{content.dark.hero.tag}</span>
+					</span>
+					
+					<h1 class="text-6xl md:text-8xl lg:text-9xl font-serif text-sikuani-primary mb-8 leading-[0.9] tracking-tighter">
+						<span class="block dark:hidden">{content.light.hero.title}</span>
+						<span class="hidden dark:block">{content.dark.hero.title}</span>
+					</h1>
+					
+					<p class="text-xl md:text-2xl text-sikuani-on-surface/90 max-w-2xl mb-12 font-sans leading-relaxed">
+						<span class="block dark:hidden">{content.light.hero.description}</span>
+						<span class="hidden dark:block">{content.dark.hero.description}</span>
+					</p>
+					
+					<div class="flex flex-wrap gap-6">
+						<Button variant="primary" class="text-lg px-12 py-5">
+							<span class="block dark:hidden">{content.light.hero.primaryBtn}</span>
+							<span class="hidden dark:block">{content.dark.hero.primaryBtn}</span>
+						</Button>
+						<Button variant="secondary" class="text-lg px-12 py-5">
+							<span class="block dark:hidden">{content.light.hero.secondaryBtn}</span>
+							<span class="hidden dark:block">{content.dark.hero.secondaryBtn}</span>
+						</Button>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Arquitectura Consciente Section (Layout Swap) -->
+		<section class="py-32 bg-sikuani-surface overflow-hidden transition-colors duration-700">
+			<div class="container mx-auto px-4">
+				<div class="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+					<!-- Image: Left in Dark, Right in Light -->
+					<div class="w-full lg:w-1/2 order-1 dark:order-1 transition-all duration-700">
+						<div class="aspect-[4/5] rounded-sikuani-card overflow-hidden bg-sikuani-bg relative group">
+							<img src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&q=80&w=1200" alt="Architecture" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
+							<div class="absolute inset-0 border-[20px] border-sikuani-bg/20"></div>
+						</div>
+					</div>
+
+					<!-- Text: Right in Dark, Left in Light -->
+					<div class="w-full lg:w-1/2 order-2 dark:order-2 transition-all duration-700">
+						<SectionHeader 
+							title="Arquitectura Consciente" 
+							subtitle="El Concepto" 
+						/>
+						<p class="text-lg text-sikuani-on-surface/80 mb-8 font-sans leading-relaxed">
+							Cada estructura en Sikuani ha sido diseñada para coexistir con el ecosistema. No construimos sobre la selva; nos integramos en ella, utilizando materiales que respiran y sistemas que devuelven a la tierra lo que tomamos.
+						</p>
+						
+						<!-- Dark Mode Exclusive Content -->
+						<div class="hidden dark:block space-y-8 animate-fade-in">
+							<div class="flex items-center gap-6">
+								<span class="text-6xl font-serif text-sikuani-primary">0%</span>
+								<span class="text-xl font-sans font-bold uppercase tracking-widest">Impacto Ambiental</span>
+							</div>
+							<ul class="space-y-4">
+								<li class="flex items-center gap-4 text-sikuani-primary font-bold">
+									<span class="h-2 w-2 bg-sikuani-primary rounded-full"></span>
+									Materiales Orgánicos
+								</li>
+								<li class="flex items-center gap-4 text-sikuani-primary font-bold">
+									<span class="h-2 w-2 bg-sikuani-primary rounded-full"></span>
+									Energía 100% Renovable
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Testimonials Section -->
+		<section class="py-32 bg-sikuani-bg transition-colors duration-700">
+			<div class="container mx-auto px-4">
+				<SectionHeader 
+					title="Voces del Bosque" 
+					subtitle="Lo que dicen nuestros huéspedes" 
+					centered={true}
+				/>
+				
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-12 mt-20">
+					{content.light.testimonials.map((t, i) => (
+						<div class="p-12 rounded-sikuani-card bg-sikuani-surface border border-sikuani-primary/5 hover:border-sikuani-primary/20 transition-all duration-500 block dark:hidden">
+							<p class="text-xl italic font-serif mb-8 text-sikuani-on-surface/90 leading-relaxed">"{t.text}"</p>
+							<div class="flex items-center gap-4">
+								<div class="h-12 w-12 rounded-full bg-sikuani-primary/10"></div>
+								<div>
+									<h4 class="font-sans font-bold text-sikuani-primary">{t.name}</h4>
+									<p class="text-sm opacity-60 uppercase tracking-tighter">{t.role}</p>
+								</div>
+							</div>
+						</div>
+					))}
+					{content.dark.testimonials.map((t, i) => (
+						<div class="p-12 rounded-sikuani-card bg-sikuani-surface border border-sikuani-primary/5 hover:border-sikuani-primary/20 transition-all duration-500 hidden dark:block">
+							<p class="text-xl italic font-serif mb-8 text-sikuani-on-surface/90 leading-relaxed">"{t.text}"</p>
+							<div class="flex items-center gap-4">
+								<div class="h-12 w-12 rounded-full bg-sikuani-primary/10"></div>
+								<div>
+									<h4 class="font-sans font-bold text-sikuani-primary lowercase">{t.name}</h4>
+									<p class="text-sm opacity-60 uppercase tracking-tighter">{t.role}</p>
+								</div>
+							</div>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<!-- Dark Mode Exclusive: Experiences Grid -->
+		<section class="py-32 bg-sikuani-surface hidden dark:block border-t border-sikuani-primary/10">
+			<div class="container mx-auto px-4 text-center">
+				<SectionHeader title="Experiencias" centered={true} />
+				<div class="grid grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
+					{content.dark.experiences.map(exp => (
+						<div class="p-8 border border-sikuani-primary/20 rounded-sikuani-card hover:bg-sikuani-primary/10 transition-all duration-300">
+							<div class="text-4xl mb-4">{exp.icon}</div>
+							<h3 class="font-sans font-bold uppercase tracking-widest text-sm">{exp.title}</h3>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<Footer />
 </Layout>
+
+<style>
+	@keyframes spin-slow {
+		from { transform: rotate(0deg); }
+		to { transform: rotate(360deg); }
+	}
+	.animate-spin-slow {
+		animation: spin-slow 12s linear infinite;
+	}
+	.animate-fade-in {
+		animation: fadeIn 1s ease-out;
+	}
+	@keyframes fadeIn {
+		from { opacity: 0; transform: translateY(10px); }
+		to { opacity: 1; transform: translateY(0); }
+	}
+</style>

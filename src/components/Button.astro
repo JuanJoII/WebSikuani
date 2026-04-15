@@ -1,0 +1,23 @@
+---
+interface Props {
+	href?: string;
+	variant?: 'primary' | 'secondary' | 'ghost';
+	class?: string;
+}
+
+const { href, variant = 'primary', class: className } = Astro.props;
+
+const baseStyles = "px-6 py-3 rounded-sikuani-org transition-all duration-300 font-sans font-semibold text-center inline-block cursor-pointer";
+
+const variants = {
+	primary: "bg-sikuani-accent dark:bg-sikuani-primary text-black hover:opacity-90",
+	secondary: "border-2 border-sikuani-primary text-sikuani-primary hover:bg-sikuani-primary hover:text-sikuani-bg",
+	ghost: "text-sikuani-primary hover:bg-sikuani-primary/10"
+};
+
+const Tag = href ? 'a' : 'button';
+---
+
+<Tag {href} class:list={[baseStyles, variants[variant], className]}>
+	<slot />
+</Tag>
