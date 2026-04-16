@@ -1,7 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
-import Footer from '../components/Footer.astro';
 import Button from '../components/Button.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 
@@ -77,11 +75,11 @@ const content = {
 					</p>
 					
 					<div class="flex flex-wrap gap-6">
-						<Button href={`${base}reservas`} variant="primary" class="text-lg px-12 py-5">
+						<Button href={`${base}reservas/`} variant="primary" class="text-lg px-12 py-5">
 							<span class="block dark:hidden">{content.light.hero.primaryBtn}</span>
 							<span class="hidden dark:block">{content.dark.hero.primaryBtn}</span>
 						</Button>
-						<Button href={`${base}sobre-nosotros`} variant="secondary" class="text-lg px-12 py-5">
+						<Button href={`${base}sobre-nosotros/`} variant="secondary" class="text-lg px-12 py-5">
 							<span class="block dark:hidden">{content.light.hero.secondaryBtn}</span>
 							<span class="hidden dark:block">{content.dark.hero.secondaryBtn}</span>
 						</Button>
