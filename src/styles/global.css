@@ -7,8 +7,8 @@
   --color-sikuani-surface: var(--sikuani-surface);
   --color-sikuani-on-surface: var(--sikuani-on-surface);
 
-  --font-serif: "DM Serif Display", serif;
-  --font-sans: "Be Vietnam Pro", sans-serif;
+  --font-serif: 'DM Serif Display', serif;
+  --font-sans: 'Be Vietnam Pro', sans-serif;
 
   --radius-sikuani-org: 12px;
   --radius-sikuani-card: 16px;

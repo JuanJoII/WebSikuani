@@ -13,13 +13,14 @@ const content = {
 		},
 		sidebar: {
 			title: "RESUMEN",
-			room: "PREMIUM SUITE",
+			room: "ECO-SUITE RAINFOREST",
 			price: "$1,800.00",
-			details: "5 noches / 2 adultos",
+			details: "6 Noches / 2 Adultos",
 			taxes: "$342.00",
 			sustainability: "$45.00",
 			total: "$2,187.00",
-			btn: "CONFIRMAR RESERVA"
+			btn: "CONFIRMAR RESERVA",
+			policy: "Cancelación gratuita hasta 48 horas antes del Check-In."
 		}
 	},
 	dark: {
@@ -29,13 +30,14 @@ const content = {
 		},
 		sidebar: {
 			title: "Tu Estadía",
-			room: "PREMIUM SUITE",
+			room: "ECO-SUITE RAINFOREST",
 			price: "$1,800.00",
-			details: "4 Noches x $450",
-			taxes: "$120.00",
-			sustainability: "$0.00",
-			total: "$1,920.00",
-			btn: "Confirmar Reserva"
+			details: "6 Noches x $300",
+			taxes: "$342.00",
+			sustainability: "$45.00",
+			total: "$2,187.00",
+			btn: "Confirmar Reserva",
+			policy: "Cancelación gratuita hasta 48 horas antes del Check-In."
 		},
 		rituals: [
 			{ title: "Ritual del Bosque", img: "https://images.unsplash.com/photo-1544161515-4ad6ce175068?auto=format&fit=crop&q=80&w=400" },
@@ -47,7 +49,6 @@ const content = {
 ---
 
 <Layout title="Reservas - Sikuani Rend">
-	<Navbar />
 
 	<main class="transition-colors duration-700 bg-sikuani-bg min-h-screen">
 		<section class="py-24">
@@ -86,22 +87,22 @@ const content = {
 							</div>
 							<div class="grid grid-cols-7 gap-2 text-center text-sm font-sans">
 								{['D', 'L', 'M', 'M', 'J', 'V', 'S'].map(d => <div class="font-bold opacity-40 py-2">{d}</div>)}
+								<div class="py-4"></div>
+								<div class="py-4"></div>
 								{Array.from({ length: 31 }).map((_, i) => {
 									const day = i + 1;
-									const isSelected = day >= 14 && day <= 18;
+									const isSelected = (day >= 14 && 18 >= day);
 									return (
-										<Fragment>
-											<div 
-												class:list={[
-													"py-4 rounded-sikuani-org transition-colors cursor-pointer",
-													isSelected 
-														? "bg-sikuani-primary text-white dark:text-black font-bold" 
-														: "hover:bg-sikuani-primary/5"
-												]}
-											>
-												{day}
-											</div>
-										</Fragment>
+										<div 
+											class:list={[
+												"py-4 rounded-sikuani-org transition-colors cursor-pointer",
+												isSelected 
+													? "bg-sikuani-primary text-white dark:text-black font-bold" 
+													: "hover:bg-sikuani-primary/5"
+											]}
+										>
+											{day}
+										</div>
 									);
 								})}
 							</div>
@@ -162,6 +163,11 @@ const content = {
 									<span class="block dark:hidden">{content.light.sidebar.btn}</span>
 									<span class="hidden dark:block">{content.dark.sidebar.btn}</span>
 								</Button>
+
+								<p class="text-xs text-center opacity-50 mt-6 italic">
+									<span class="block dark:hidden">{content.light.sidebar.policy}</span>
+									<span class="hidden dark:block">{content.dark.sidebar.policy}</span>
+								</p>
 							</div>
 						</div>
 					</aside>
@@ -176,9 +182,9 @@ const content = {
 				<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
 					{content.dark.rituals.map(ritual => (
 						<div class="group cursor-pointer">
-							<div class="aspect-[4/5] rounded-sikuani-card overflow-hidden mb-6 relative">
+							<div class="aspect-4/5 rounded-sikuani-card overflow-hidden mb-6 relative">
 								<img src={ritual.img} alt={ritual.title} class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-								<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
+								<div class="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
 									<span class="text-white font-serif text-2xl">{ritual.title}</span>
 								</div>
 							</div>
@@ -190,5 +196,4 @@ const content = {
 		</section>
 	</main>
 
-	<Footer />
 </Layout>

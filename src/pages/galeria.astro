@@ -1,0 +1,49 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+
+const images = [
+	{ src: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80&w=800", title: "Bosque Profundo" },
+	{ src: "https://images.unsplash.com/photo-1511497584788-915e58d2c944?auto=format&fit=crop&q=80&w=800", title: "Luz Filtrada" },
+	{ src: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&q=80&w=800", title: "Niebla Matinal" },
+	{ src: "https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&q=80&w=800", title: "Cumbres Verdes" },
+	{ src: "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&q=80&w=800", title: "Sendero Oculto" },
+	{ src: "https://images.unsplash.com/photo-1426604966848-d7adac402bff?auto=format&fit=crop&q=80&w=800", title: "Reflejo de Agua" },
+];
+---
+
+<Layout title="Galería - Sikuani">
+
+	<main class="transition-colors duration-700 bg-sikuani-bg min-h-screen">
+		<section class="py-24">
+			<div class="container mx-auto px-4">
+				<SectionHeader 
+					title="Galería Visual" 
+					subtitle="Inspiración Natural" 
+					centered={true} 
+				/>
+				
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+					{images.map(img => (
+						<div class="group cursor-pointer overflow-hidden rounded-sikuani-card border border-sikuani-primary/10 bg-sikuani-surface shadow-lg">
+							<div class="aspect-square overflow-hidden">
+								<img 
+									src={img.src} 
+									alt={img.title} 
+									class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+								/>
+							</div>
+							<div class="p-6">
+								<h3 class="text-xl font-serif text-sikuani-primary">{img.title}</h3>
+								<p class="text-sm font-sans text-sikuani-on-surface/60 uppercase tracking-widest mt-2">Sikuani Essence</p>
+							</div>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+	</main>
+
+</Layout>

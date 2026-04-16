@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
-import '@fontsource/dm-serif-display';
-import '@fontsource/be-vietnam-pro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
 
 interface Props {
 	title: string;
@@ -40,7 +40,9 @@ const { title, description = "Sikuani - Organic Soul and Nocturnal Experience" }
 		</script>
 	</head>
 	<body class="bg-sikuani-bg text-sikuani-on-surface selection:bg-sikuani-accent selection:text-black">
-		<slot />
+		<Navbar />
+			<slot />
+		<Footer />
 	</body>
 </html>
 

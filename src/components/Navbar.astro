@@ -4,10 +4,9 @@ import ThemeToggle from './ThemeToggle.astro';
 
 const navLinks = [
 	{ text: 'Inicio', href: '/' },
-	{ text: 'Servicios', href: '/servicios' },
-	{ text: 'Proyectos', href: '/proyectos' },
 	{ text: 'Sobre Nosotros', href: '/sobre-nosotros' },
-	{ text: 'Reservas', href: '/reservas', darkOnly: true },
+	{ text: 'Galería', href: '/galeria' },
+	{ text: 'Contacto', href: '/contacto' },
 ];
 ---
 
@@ -25,10 +24,7 @@ const navLinks = [
 					{navLinks.map(link => (
 						<a 
 							href={link.href} 
-							class:list={[
-								"text-sikuani-on-surface hover:text-sikuani-primary font-sans font-medium transition-colors",
-								link.darkOnly ? "hidden dark:inline-block" : "inline-block"
-							]}
+							class="text-sikuani-on-surface hover:text-sikuani-primary font-sans font-medium transition-colors inline-block"
 						>
 							{link.text}
 						</a>

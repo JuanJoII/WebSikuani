@@ -45,8 +45,6 @@ const content = {
 ---
 
 <Layout title="Sikuani - 1:1 High Fidelity">
-	<Navbar />
-
 	<main>
 		<!-- Hero Section -->
 		<section class="relative min-h-screen flex items-center pt-20 pb-32 overflow-hidden bg-sikuani-bg transition-colors duration-700">
@@ -56,7 +54,7 @@ const content = {
 				<div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1510797215324-95aa89f297a6?auto=format&fit=crop&q=80&w=2560')] bg-cover bg-center opacity-20 dark:opacity-0 transition-opacity duration-700"></div>
 				<!-- Dark Image: Jungle/Tiger vibe -->
 				<div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1549480017-d76466a4b7e8?auto=format&fit=crop&q=80&w=2560')] bg-cover bg-center opacity-0 dark:opacity-30 transition-opacity duration-700"></div>
-				<div class="absolute inset-0 bg-gradient-to-b from-sikuani-bg/20 via-sikuani-bg to-sikuani-bg"></div>
+				<div class="absolute inset-0 bg-linear-to-b from-sikuani-bg/20 via-sikuani-bg to-sikuani-bg"></div>
 			</div>
 			
 			<div class="container mx-auto px-4 relative z-10">
@@ -96,7 +94,7 @@ const content = {
 				<div class="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
 					<!-- Image: Left in Dark, Right in Light -->
 					<div class="w-full lg:w-1/2 order-1 dark:order-1 transition-all duration-700">
-						<div class="aspect-[4/5] rounded-sikuani-card overflow-hidden bg-sikuani-bg relative group">
+						<div class="aspect-4/5 rounded-sikuani-card overflow-hidden bg-sikuani-bg relative group">
 							<img src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&q=80&w=1200" alt="Architecture" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
 							<div class="absolute inset-0 border-[20px] border-sikuani-bg/20"></div>
 						</div>
@@ -188,7 +186,6 @@ const content = {
 		</section>
 	</main>
 
-	<Footer />
 </Layout>
 
 <style>
