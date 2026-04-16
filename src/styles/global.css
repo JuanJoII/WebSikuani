@@ -17,7 +17,7 @@
 :root {
   --sikuani-bg: #F8FAF9;
   --sikuani-primary: #368062;
-  --sikuani-accent: #F7DD16;
+  --sikuani-accent: #F7DD16; /* Amarillo Sol - Sikuani Accent */
   --sikuani-surface: #FFFFFF;
   --sikuani-on-surface: #1A1C1C;
   --color-scheme: light;
@@ -26,7 +26,7 @@
 .dark {
   --sikuani-bg: #0A1414;
   --sikuani-primary: #00FF88;
-  --sikuani-accent: #FFFFFF;
+  --sikuani-accent: #F7DD16; /* Mantener Amarillo Sol para dinamismo */
   --sikuani-surface: #142020;
   --sikuani-on-surface: #E2E2E2;
   --color-scheme: dark;

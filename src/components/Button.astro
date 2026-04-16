@@ -10,9 +10,9 @@ const { href, variant = 'primary', class: className } = Astro.props;
 const baseStyles = "px-6 py-3 rounded-sikuani-org transition-all duration-300 font-sans font-semibold text-center inline-block cursor-pointer";
 
 const variants = {
-	primary: "bg-sikuani-accent dark:bg-sikuani-primary text-black hover:opacity-90",
-	secondary: "border-2 border-sikuani-primary text-sikuani-primary hover:bg-sikuani-primary hover:text-sikuani-bg",
-	ghost: "text-sikuani-primary hover:bg-sikuani-primary/10"
+	primary: "bg-sikuani-accent text-black hover:opacity-90 shadow-md hover:shadow-sikuani-accent/20",
+	secondary: "border-2 border-sikuani-accent text-sikuani-accent hover:bg-sikuani-accent hover:text-black",
+	ghost: "text-sikuani-accent hover:bg-sikuani-accent/10"
 };
 
 const Tag = href ? 'a' : 'button';

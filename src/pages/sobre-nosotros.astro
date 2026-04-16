@@ -5,34 +5,34 @@ import SectionHeader from '../components/SectionHeader.astro';
 const content = {
 	light: {
 		hero: {
-			tag: "Propósito Humano",
-			title: "Innovación con Propósito Humano",
-			description: "En Sikuani Rend, transformamos la complejidad técnica en soluciones intuitivas que potencian el crecimiento de las empresas, manteniendo siempre el foco en las personas que las construyen."
+			tag: "Nuestra Historia",
+			title: "Un refugio nacido de la tierra y el respeto",
+			description: "Sikuani surgió como un sueño de integración absoluta. Ubicado en el corazón del ecosistema más vibrante, nuestro hotel no fue construido sobre la naturaleza, sino dentro de ella. Cada estructura respeta el flujo del viento y el curso de las aguas subterráneas. "
 		},
 		mission: {
 			title: "Nuestra Misión",
 			text: "Democratizar el acceso a tecnología de alto nivel, permitiendo que organizaciones de cualquier escala operen con la eficiencia y seguridad de los líderes globales."
 		},
 		values: [
-			{ title: "Transparencia Radical", desc: "Comunicación honesta y procesos abiertos en cada etapa del desarrollo." },
-			{ title: "Excelencia Técnica", desc: "No nos conformamos con lo que funciona; buscamos lo que sobresale." },
-			{ title: "Empatía Sistémica", desc: "Entendemos el impacto de nuestro código en la vida real de los usuarios." }
+			{ title: "Sustentabilidad", desc: "Compromiso con prácticas ecológicas y uso responsable de los recursos." },
+			{ title: "Calma Como Nunca", desc: "Experiencia de tranquilidad y serenidad en medio de la naturaleza." },
+			{ title: "Conexión Viva", desc: "Conexión profunda con el entorno natural y la comunidad local." }
 		]
 	},
 	dark: {
 		hero: {
-			tag: "Ingeniería de Precisión",
-			title: "Forjando el Futuro Digital",
-			description: "Combinamos ingeniería de precisión con una visión audaz para crear infraestructuras digitales resilientes. Somos el motor invisible detrás de las plataformas más robustas del mercado."
+			tag: "Nuestra Historia",
+			title: "Un refugio nacido de la tierra y el respeto",
+			description: "Sikuani surgió como un sueño de integración absoluta. Ubicado en el corazón del ecosistema más vibrante, nuestro hotel no fue construido sobre la naturaleza, sino dentro de ella. Cada estructura respeta el flujo del viento y el curso de las aguas subterráneas. "
 		},
 		mission: {
 			title: "Nuestra Misión",
-			text: "Construir la columna vertebral de la economía digital, garantizando escalabilidad y rendimiento extremo en entornos de alta demanda."
+			text: "Proporcionar una experiencia de lujo que no compita con el silencio, sino que lo amplifique. Aquí, la arquitectura desaparece para dejar paso a la vida. "
 		},
 		values: [
-			{ title: "Rigor Algorítmico", desc: "Cada línea de código es sometida a pruebas de estrés y validación formal." },
-			{ title: "Escalabilidad Infinita", desc: "Sistemas diseñados para crecer sin fricción, desde startups hasta enterprise." },
-			{ title: "Seguridad de Grado Militar", desc: "Protección proactiva contra amenazas en un panorama digital hostil." }
+			{ title: "Sustentabilidad", desc: "Compromiso con prácticas ecológicas y uso responsable de los recursos." },
+			{ title: "Calma Como Nunca", desc: "Experiencia de tranquilidad y serenidad en medio de la naturaleza." },
+			{ title: "Conexión Viva", desc: "Conexión profunda con el entorno natural y la comunidad local." }
 		]
 	}
 };
@@ -84,7 +84,7 @@ const content = {
 					</div>
 					<div class="w-full lg:w-1/2">
 						<div class="aspect-video rounded-sikuani-card overflow-hidden bg-sikuani-bg relative border border-sikuani-primary/10 shadow-xl">
-							<img src="https://images.unsplash.com/photo-1522071823991-b1ae5e6a3048?auto=format&fit=crop&q=80&w=1200" alt="Team" class="w-full h-full object-cover dark:grayscale transition-all duration-700" />
+							<img src="https://eco-monte-tierra-habitaciones-y-glamping.hotelesdelquindio.com/data/Images/OriginalPhoto/11744/1174460/1174460109/image-filandia-ecohotel-monte-tierra-habitaciones-y-glamping-37.JPEG" alt="Team" class="w-full h-full object-cover dark:grayscale transition-all duration-700" />
 							<div class="absolute inset-0 bg-sikuani-primary/10 mix-blend-multiply"></div>
 						</div>
 					</div>
@@ -107,7 +107,7 @@ const content = {
 					))}
 					{content.dark.values.map((v, i) => (
 						<div class="p-12 rounded-sikuani-card bg-sikuani-surface border border-sikuani-primary/10 hover:border-sikuani-primary/40 transition-all duration-500 hidden dark:block group">
-							<div class="h-12 w-12 rounded-sikuani-org bg-sikuani-primary flex items-center justify-center text-black font-bold mb-8 group-hover:bg-white transition-colors">0{i+1}</div>
+							<div class="h-12 w-12 rounded-sikuani-org bg-sikuani-accent flex items-center justify-center text-black font-bold mb-8 group-hover:scale-110 transition-transform">0{i+1}</div>
 							<h3 class="text-2xl font-serif mb-4 text-sikuani-primary">{v.title}</h3>
 							<p class="text-sikuani-on-surface/70 font-sans leading-relaxed">{v.desc}</p>
 						</div>
@@ -119,9 +119,9 @@ const content = {
 		<!-- Team Section teaser -->
 		<section class="py-32 bg-sikuani-surface relative overflow-hidden">
 			<div class="container mx-auto px-4 text-center">
-				<SectionHeader title="El Colectivo Sikuani" subtitle="Talento Humano" centered={true} />
+				<SectionHeader title="Equipo Sikuani" subtitle="Talento Humano" centered={true} />
 				<p class="text-xl text-sikuani-on-surface/80 max-w-3xl mx-auto mb-16 font-sans">
-					Un colectivo diverso de ingenieros, diseñadores y estrategas unidos por la curiosidad y el rigor técnico.
+					Detrás de cada rincón de Sikuani hay un equipo apasionado que comparte una visión común: crear un espacio donde la tecnología y la naturaleza coexistan en perfecta armonía. Nuestro equipo es tan diverso como el ecosistema que nos rodea, con expertos en hospitalidad, sostenibilidad, diseño y tecnología trabajando juntos para hacer realidad esta visión.
 				</p>
 				<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
 					{[1, 2, 3, 4].map(i => (
