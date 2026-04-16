@@ -6,9 +6,9 @@ const base = import.meta.env.BASE_URL;
 
 const navLinks = [
 	{ text: 'Inicio', href: `${base}` },
-	{ text: 'Sobre Nosotros', href: `${base}sobre-nosotros` },
-	{ text: 'Galería', href: `${base}galeria` },
-	{ text: 'Contacto', href: `${base}contacto` },
+	{ text: 'Sobre Nosotros', href: `${base}sobre-nosotros/` },
+	{ text: 'Galería', href: `${base}galeria/` },
+	{ text: 'Contacto', href: `${base}contacto/` },
 ];
 ---
 
@@ -37,7 +37,7 @@ const navLinks = [
 			<div class="flex items-center gap-4">
 				<ThemeToggle />
 				<div class="hidden md:block">
-					<Button href={`${base}contacto`} variant="primary">Contacto</Button>
+					<Button href={`${base}contacto/`} variant="primary">Contacto</Button>
 				</div>
 			</div>
 		</div>

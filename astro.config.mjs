@@ -5,6 +5,10 @@ import tailwind from '@tailwindcss/vite';
 export default defineConfig({
   site: 'https://JuanJoII.github.io',
   base: '/WebSikuani/',
+  trailingSlash: 'always',
+  build: {
+    format: 'directory'
+  },
   vite: {
     plugins: [tailwind()],
   },
