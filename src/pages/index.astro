@@ -5,6 +5,8 @@ import Footer from '../components/Footer.astro';
 import Button from '../components/Button.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 
+const base = import.meta.env.BASE_URL;
+
 // Datos duales según el diseño de Stitch
 const content = {
 	light: {
@@ -75,11 +77,11 @@ const content = {
 					</p>
 					
 					<div class="flex flex-wrap gap-6">
-						<Button variant="primary" class="text-lg px-12 py-5">
+						<Button href={`${base}reservas`} variant="primary" class="text-lg px-12 py-5">
 							<span class="block dark:hidden">{content.light.hero.primaryBtn}</span>
 							<span class="hidden dark:block">{content.dark.hero.primaryBtn}</span>
 						</Button>
-						<Button variant="secondary" class="text-lg px-12 py-5">
+						<Button href={`${base}sobre-nosotros`} variant="secondary" class="text-lg px-12 py-5">
 							<span class="block dark:hidden">{content.light.hero.secondaryBtn}</span>
 							<span class="hidden dark:block">{content.dark.hero.secondaryBtn}</span>
 						</Button>

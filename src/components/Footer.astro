@@ -1,17 +1,19 @@
 ---
+const base = import.meta.env.BASE_URL;
+
 const footerLinks = [
 	{
 		title: 'Explorar',
 		links: [
-			{ text: 'Inicio', href: '/' },
-			{ text: 'Sobre Nosotros', href: '/sobre-nosotros' },
+			{ text: 'Inicio', href: `${base}` },
+			{ text: 'Sobre Nosotros', href: `${base}sobre-nosotros` },
 		]
 	},
 	{
 		title: 'Conectar',
 		links: [
-			{ text: 'Galería', href: '/galeria' },
-			{ text: 'Contacto', href: '/contacto' },
+			{ text: 'Galería', href: `${base}galeria` },
+			{ text: 'Contacto', href: `${base}contacto` },
 		]
 	}
 ];
@@ -20,7 +22,7 @@ const footerLinks = [
 <footer class="sikuani-footer py-20 px-4 transition-colors duration-500">
 	<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
 		<div class="col-span-1 md:col-span-2">
-			<a href="/" class="text-4xl font-serif mb-6 inline-block">Sikuani</a>
+			<a href={base} class="text-4xl font-serif mb-6 inline-block">Sikuani</a>
 			<p class="max-w-md font-sans leading-relaxed opacity-90">
 				Fomentando el crecimiento orgánico y la serenidad biomimética a través del diseño y la comunidad. Nuestra misión es conectar la esencia de la selva con la innovación moderna.
 			</p>

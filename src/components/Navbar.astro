@@ -2,11 +2,13 @@
 import Button from './Button.astro';
 import ThemeToggle from './ThemeToggle.astro';
 
+const base = import.meta.env.BASE_URL;
+
 const navLinks = [
-	{ text: 'Inicio', href: '/' },
-	{ text: 'Sobre Nosotros', href: '/sobre-nosotros' },
-	{ text: 'Galería', href: '/galeria' },
-	{ text: 'Contacto', href: '/contacto' },
+	{ text: 'Inicio', href: `${base}` },
+	{ text: 'Sobre Nosotros', href: `${base}sobre-nosotros` },
+	{ text: 'Galería', href: `${base}galeria` },
+	{ text: 'Contacto', href: `${base}contacto` },
 ];
 ---
 
@@ -14,7 +16,7 @@ const navLinks = [
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="flex justify-between items-center h-20">
 			<div class="flex-shrink-0">
-				<a href="/" class="text-3xl font-serif text-sikuani-primary tracking-tight transition-all duration-700">
+				<a href={base} class="text-3xl font-serif text-sikuani-primary tracking-tight transition-all duration-700">
 					Sikuani
 				</a>
 			</div>
@@ -35,7 +37,7 @@ const navLinks = [
 			<div class="flex items-center gap-4">
 				<ThemeToggle />
 				<div class="hidden md:block">
-					<Button href="/contacto" variant="primary">Contacto</Button>
+					<Button href={`${base}contacto`} variant="primary">Contacto</Button>
 				</div>
 			</div>
 		</div>
