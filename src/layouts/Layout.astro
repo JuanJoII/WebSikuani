@@ -8,7 +8,7 @@ interface Props {
 	description?: string;
 }
 
-const { title, description = "Sikuani - Organic Soul and Nocturnal Experience" } = Astro.props;
+const { title, description = "Ecohotel Sikuani - Organic Soul and Nocturnal Experience in nature" } = Astro.props;
 ---
 
 <!doctype html>
@@ -39,15 +39,9 @@ const { title, description = "Sikuani - Organic Soul and Nocturnal Experience" }
 			window.localStorage.setItem('theme', theme);
 		</script>
 	</head>
-	<body class="bg-sikuani-bg text-sikuani-on-surface selection:bg-sikuani-accent selection:text-black">
+	<body class="bg-canvas text-body selection:bg-accent selection:text-ink">
 		<Navbar />
-			<slot />
+		<slot />
 		<Footer />
 	</body>
 </html>
-
-<style is:global>
-	h1, h2, h3, h4, h5, h6 {
-		font-family: 'DM Serif Display', serif;
-	}
-</style>

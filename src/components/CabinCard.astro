@@ -1,0 +1,70 @@
+---
+import AmenityRow from './AmenityRow.astro';
+import Button from './Button.astro';
+
+interface Props {
+  title: string;
+  image: string;
+  price: string;
+  rating: string;
+  amenities?: string[];
+  href?: string;
+}
+
+const { 
+  title, 
+  image, 
+  price, 
+  rating, 
+  amenities = ['habitaciones', 'duchas', 'parrilla', 'spa'],
+  href = '#' 
+} = Astro.props;
+
+const base = import.meta.env.BASE_URL;
+---
+
+<div class="group bg-canvas dark:bg-dark-surface border border-hairline dark:border-dark-hairline rounded-md overflow-hidden transition-all duration-500 shadow-hover hover:border-primary/20 dark:hover:border-primary/20 hover:bg-canvas dark:hover:bg-dark-surface-soft flex flex-col h-full select-none">
+  <!-- Imagen: Proporción fija 4:3 con esquinas redondeadas internas -->
+  <div class="aspect-4/3 overflow-hidden m-4 rounded-md relative bg-surface-soft dark:bg-dark-surface-soft">
+    <img 
+      src={image} 
+      alt={title} 
+      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" 
+    />
+    <!-- Badge de Valoración -->
+    <div class="absolute top-3 right-3 bg-accent/90 dark:bg-dark-accent/90 text-ink text-xs font-sans font-bold px-2.5 py-1 rounded-full flex items-center gap-1 shadow-md">
+      <span>★</span>
+      <span>{rating}</span>
+    </div>
+  </div>
+
+  <!-- Detalles de la Cabaña -->
+  <div class="px-6 pb-6 flex-1 flex flex-col justify-between">
+    <div>
+      <!-- Título de Cabaña -->
+      <h3 class="text-lg font-serif text-ink font-semibold tracking-tight leading-snug line-clamp-1 mb-2">
+        {title}
+      </h3>
+      
+      <!-- Amenidades Pasivas Compactas -->
+      <div class="my-4">
+        <AmenityRow amenities={amenities} compact={true} />
+      </div>
+    </div>
+
+    <!-- Fila de Precio y Reserva -->
+    <div class="flex justify-between items-center mt-6 pt-4 border-t border-hairline/60 dark:border-dark-hairline/60">
+      <div>
+        <span class="block text-[10px] text-muted uppercase font-bold tracking-widest">Desde</span>
+        <div class="flex items-baseline gap-1">
+          <span class="text-xl font-serif font-bold text-primary">{price}</span>
+          <span class="text-xs text-muted">/ noche</span>
+        </div>
+      </div>
+      
+      <Button href={href} variant="primary" class="h-10 px-4 text-xs font-bold uppercase tracking-wider">
+        Reservar
+      </Button>
+    </div>
+  </div>
+</div>

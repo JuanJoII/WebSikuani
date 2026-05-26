@@ -1,69 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100..900;1,100..900&family=DM+Serif+Display:ital@0;1&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-sikuani-bg: var(--sikuani-bg);
-  --color-sikuani-primary: var(--sikuani-primary);
-  --color-sikuani-accent: var(--sikuani-accent);
-  --color-sikuani-surface: var(--sikuani-surface);
-  --color-sikuani-on-surface: var(--sikuani-on-surface);
+  --color-primary: #368062;
+  --color-primary-light: #5e9a81;
+  --color-primary-soft: #86b3a1;
+  --color-secondary: #9aad8c;
+  --color-secondary-light: #aebe9f;
+  --color-accent: #F7DD16;
+  --color-ink: #222222;
+  --color-body: #3f3f3f;
+  --color-muted: #6a6a6a;
+  --color-hairline: #dddddd;
+  --color-hairline-soft: #ebebeb;
+  --color-canvas: #ffffff;
+  --color-surface-soft: #f7f7f7;
+  --color-surface-card: #ffffff;
 
-  --font-serif: 'DM Serif Display', serif;
+  --font-serif: 'DM Serif Display', Georgia, serif;
   --font-sans: 'Be Vietnam Pro', sans-serif;
 
-  --radius-sikuani-org: 12px;
-  --radius-sikuani-card: 16px;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-base: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-section: 64px;
+
+  --max-width-xs: 20rem;
+  --max-width-sm: 24rem;
+  --max-width-md: 28rem;
+  --max-width-lg: 32rem;
+  --max-width-xl: 36rem;
+  --max-width-2xl: 42rem;
+  --max-width-3xl: 48rem;
+  --max-width-4xl: 56rem;
+  --max-width-5xl: 64rem;
+  --max-width-6xl: 72rem;
+  --max-width-7xl: 80rem;
 }
 
-:root {
-  --sikuani-bg: #F8FAF9;
-  --sikuani-primary: #368062;
-  --sikuani-accent: #F7DD16; /* Amarillo Sol - Sikuani Accent */
-  --sikuani-surface: #FFFFFF;
-  --sikuani-on-surface: #1A1C1C;
-  --color-scheme: light;
-}
-
-.dark {
-  --sikuani-bg: #0A1414;
-  --sikuani-primary: #00FF88;
-  --sikuani-accent: #F7DD16; /* Mantener Amarillo Sol para dinamismo */
-  --sikuani-surface: #142020;
-  --sikuani-on-surface: #E2E2E2;
+html.dark {
+  /* Dark Mode (Night Forest) */
+  --color-primary: #449977;
+  --color-primary-light: #5e9a81;
+  --color-primary-soft: #86b3a1;
+  --color-secondary: #a8bfa0;
+  --color-secondary-light: #aebe9f;
+  --color-accent: #F9E343;
+  --color-ink: #f5f7f6;
+  --color-body: #c9d1cc;
+  --color-muted: #8ca096;
+  --color-hairline: #2c3b35;
+  --color-hairline-soft: #3a4d45;
+  --color-canvas: #121815;
+  --color-surface-soft: #232e29;
+  --color-surface-card: #1a231f;
   --color-scheme: dark;
 }
 
 @layer base {
   :root {
-    background-color: var(--sikuani-bg);
-    color: var(--sikuani-on-surface);
+    background-color: var(--color-canvas);
+    color: var(--color-body);
   }
 
   body {
     font-family: var(--font-sans);
-    background-color: var(--sikuani-bg);
-    color: var(--sikuani-on-surface);
-    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+    background-color: var(--color-canvas);
+    color: var(--color-body);
+    transition: background-color 0.5s ease-in-out, border-color 0.5s ease-in-out, color 0.5s ease-in-out;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-serif);
+    color: var(--color-ink);
+  }
+
+  /* Dark Mode Image Dimming */
+  html.dark img {
+    filter: brightness(0.85) contrast(1.02);
+    transition: filter 0.5s ease;
   }
 }
 
-/* Estilos específicos para el Footer para evitar colisiones */
-.sikuani-footer {
-  background-color: #368062; /* Verde Bosque fijo para modo claro */
-  color: #FFFFFF !important;
+/* Clases de Utilidad Personalizadas */
+.shadow-hover {
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
-
-.dark .sikuani-footer {
-  background-color: #142020; /* Superficie oscura para modo oscuro */
-  color: #E2E2E2 !important;
-}
-
-.sikuani-footer a, 
-.sikuani-footer p, 
-.sikuani-footer h4, 
-.sikuani-footer span {
-  color: inherit;
+.shadow-hover:hover {
+  box-shadow: rgba(0, 0, 0, 0.03) 0px 4px 12px;
 }

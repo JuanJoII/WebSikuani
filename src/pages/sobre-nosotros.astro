@@ -2,136 +2,194 @@
 import Layout from '../layouts/Layout.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 
-const content = {
-	light: {
-		hero: {
-			tag: "Nuestra Historia",
-			title: "Un refugio nacido de la tierra y el respeto",
-			description: "Sikuani surgió como un sueño de integración absoluta. Ubicado en el corazón del ecosistema más vibrante, nuestro hotel no fue construido sobre la naturaleza, sino dentro de ella. Cada estructura respeta el flujo del viento y el curso de las aguas subterráneas. "
-		},
-		mission: {
-			title: "Nuestra Misión",
-			text: "Democratizar el acceso a tecnología de alto nivel, permitiendo que organizaciones de cualquier escala operen con la eficiencia y seguridad de los líderes globales."
-		},
-		values: [
-			{ title: "Sustentabilidad", desc: "Compromiso con prácticas ecológicas y uso responsable de los recursos." },
-			{ title: "Calma Como Nunca", desc: "Experiencia de tranquilidad y serenidad en medio de la naturaleza." },
-			{ title: "Conexión Viva", desc: "Conexión profunda con el entorno natural y la comunidad local." }
-		]
+const values = [
+	{ 
+		title: "Sustentabilidad Activa", 
+		desc: "Compromiso absoluto con la huella cero. Desde la gestión circular del agua hasta el uso de materiales de origen local certificado." 
 	},
-	dark: {
-		hero: {
-			tag: "Nuestra Historia",
-			title: "Un refugio nacido de la tierra y el respeto",
-			description: "Sikuani surgió como un sueño de integración absoluta. Ubicado en el corazón del ecosistema más vibrante, nuestro hotel no fue construido sobre la naturaleza, sino dentro de ella. Cada estructura respeta el flujo del viento y el curso de las aguas subterráneas. "
-		},
-		mission: {
-			title: "Nuestra Misión",
-			text: "Proporcionar una experiencia de lujo que no compita con el silencio, sino que lo amplifique. Aquí, la arquitectura desaparece para dejar paso a la vida. "
-		},
-		values: [
-			{ title: "Sustentabilidad", desc: "Compromiso con prácticas ecológicas y uso responsable de los recursos." },
-			{ title: "Calma Como Nunca", desc: "Experiencia de tranquilidad y serenidad en medio de la naturaleza." },
-			{ title: "Conexión Viva", desc: "Conexión profunda con el entorno natural y la comunidad local." }
-		]
+	{ 
+		title: "Silencio Consciente", 
+		desc: "Proporcionamos un espacio diseñado para la desconexión total. El silencio no es la ausencia de sonido, es la presencia de paz." 
+	},
+	{ 
+		title: "Integración Biológica", 
+		desc: "Nuestra arquitectura biomimética se adapta y respeta la flora y fauna locales, funcionando como una extensión viva de la selva." 
 	}
-};
+];
+
+const team = [
+	{ name: "Sofía Montes", role: "Directora de Sostenibilidad", img: "https://i.pravatar.cc/300?img=32" },
+	{ name: "Mateo Silva", role: "Arquitecto Biomimético", img: "https://i.pravatar.cc/300?img=33" },
+	{ name: "Yara Jacanamijoy", role: "Guía Espiritual & Botánica", img: "https://i.pravatar.cc/300?img=35" },
+	{ name: "Carlos Rúa", role: "Chef de Gastronomía Ancestral", img: "https://i.pravatar.cc/300?img=12" }
+];
 ---
 
-<Layout title="Sobre Nosotros - Sikuani">
-
-	<main class="transition-colors duration-700">
+<Layout title="Sobre Nosotros - Sikuani Ecohotel">
+	<main class="bg-canvas text-body overflow-x-hidden">
 		<!-- Hero Section -->
-		<section class="py-32 bg-sikuani-bg relative overflow-hidden">
-			<!-- Visual Accents -->
-			<div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-				<div class="absolute top-[-10%] right-[-5%] w-96 h-96 bg-sikuani-primary rounded-full blur-[120px] dark:hidden"></div>
-				<div class="absolute bottom-[-10%] left-[-5%] w-96 h-96 bg-sikuani-accent rounded-full blur-[100px] dark:hidden"></div>
-				<div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20 hidden dark:block"></div>
+		<section class="py-24 relative overflow-hidden border-b border-hairline transition-colors duration-500">
+			<!-- Acentos Visuales de Fondo -->
+			<div class="absolute inset-0 opacity-10 pointer-events-none select-none">
+				<div class="absolute top-[-10%] right-[-5%] w-96 h-96 bg-primary rounded-full blur-[120px]"></div>
+				<div class="absolute bottom-[-10%] left-[-5%] w-96 h-96 bg-accent rounded-full blur-[100px]"></div>
 			</div>
 
-			<div class="container mx-auto px-4 relative z-10 text-center max-w-5xl">
-				<span class="inline-block py-1 px-4 rounded-full bg-sikuani-primary/10 text-sikuani-primary font-sans font-bold text-sm mb-8 tracking-widest uppercase">
-					<span class="block dark:hidden">{content.light.hero.tag}</span>
-					<span class="hidden dark:block">{content.dark.hero.tag}</span>
+			<div class="max-w-[1200px] mx-auto px-6 relative z-10 text-center">
+				<span class="inline-block py-1 px-4 rounded-full bg-primary/10 text-primary font-sans font-bold text-xs mb-8 tracking-widest uppercase hero-tag">
+					Nuestra Esencia
 				</span>
 				
-				<h1 class="text-6xl md:text-8xl font-serif text-sikuani-primary mb-8 leading-tight tracking-tight">
-					<span class="block dark:hidden">{content.light.hero.title}</span>
-					<span class="hidden dark:block">{content.dark.hero.title}</span>
+				<h1 class="text-5xl md:text-7xl font-serif text-ink mb-8 leading-tight tracking-tight max-w-4xl mx-auto hero-title">
+					Un refugio nacido de la tierra y el respeto.
 				</h1>
 				
-				<p class="text-xl md:text-2xl text-sikuani-on-surface/80 font-sans leading-relaxed max-w-3xl mx-auto">
-					<span class="block dark:hidden">{content.light.hero.description}</span>
-					<span class="hidden dark:block">{content.dark.hero.description}</span>
+				<p class="text-lg md:text-xl text-body font-sans leading-relaxed max-w-3xl mx-auto hero-desc">
+					Sikuani surgió como un sueño de integración absoluta con el entorno. Ubicado en el corazón del bosque húmedo, nuestro hotel no fue construido sobre la naturaleza, sino dentro de ella, respetando los senderos ancestrales del viento y el curso de las aguas subterráneas.
 				</p>
 			</div>
 		</section>
 
-		<!-- Mission Section -->
-		<section class="py-32 bg-sikuani-surface border-y border-sikuani-primary/5">
-			<div class="container mx-auto px-4">
+		<!-- Misión y Visión Section -->
+		<section class="py-24 border-b border-hairline bg-surface-soft/20 transition-colors duration-500 mission-section">
+			<div class="max-w-[1200px] mx-auto px-6">
 				<div class="flex flex-col lg:flex-row items-center gap-16">
-					<div class="w-full lg:w-1/2">
+					<!-- Misión -->
+					<div class="w-full lg:w-1/2 space-y-8 mission-content">
 						<SectionHeader 
-							title={content.light.mission.title} 
+							title="Nuestra Misión" 
 							subtitle="Nuestra Razón de Ser"
 						/>
-						<p class="text-2xl md:text-3xl font-serif text-sikuani-on-surface leading-snug italic">
-							<span class="block dark:hidden">"{content.light.mission.text}"</span>
-							<span class="hidden dark:block">"{content.dark.mission.text}"</span>
+						<p class="text-2xl md:text-3xl font-serif text-ink leading-snug italic font-normal">
+							"Ofrecer una experiencia de lujo regenerativo que reconecte al ser humano con sus orígenes biológicos, protegiendo activamente la biodiversidad y fomentando el bienestar holístico de nuestros huéspedes y comunidad local."
 						</p>
 					</div>
-					<div class="w-full lg:w-1/2">
-						<div class="aspect-video rounded-sikuani-card overflow-hidden bg-sikuani-bg relative border border-sikuani-primary/10 shadow-xl">
-							<img src="https://eco-monte-tierra-habitaciones-y-glamping.hotelesdelquindio.com/data/Images/OriginalPhoto/11744/1174460/1174460109/image-filandia-ecohotel-monte-tierra-habitaciones-y-glamping-37.JPEG" alt="Team" class="w-full h-full object-cover dark:grayscale transition-all duration-700" />
-							<div class="absolute inset-0 bg-sikuani-primary/10 mix-blend-multiply"></div>
+					
+					<!-- Imagen de apoyo (16:9) -->
+					<div class="w-full lg:w-1/2 mission-img">
+						<div class="aspect-video rounded-md overflow-hidden bg-surface-soft border border-hairline shadow-hover relative group select-none">
+							<img 
+								src="https://eco-monte-tierra-habitaciones-y-glamping.hotelesdelquindio.com/data/Images/OriginalPhoto/11744/1174460/1174460109/image-filandia-ecohotel-monte-tierra-habitaciones-y-glamping-37.JPEG" 
+								alt="Cabaña Glamping Sikuani en el bosque" 
+								class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700" 
+							/>
 						</div>
 					</div>
 				</div>
 			</div>
 		</section>
 
-		<!-- Values Grid -->
-		<section class="py-32 bg-sikuani-bg">
-			<div class="container mx-auto px-4">
-				<SectionHeader title="Nuestros Valores" centered={true} />
-				
-				<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
-					{content.light.values.map((v, i) => (
-						<div class="p-12 rounded-sikuani-card bg-sikuani-surface border border-sikuani-primary/5 hover:border-sikuani-primary/20 transition-all duration-500 block dark:hidden group">
-							<div class="h-12 w-12 rounded-sikuani-org bg-sikuani-accent flex items-center justify-center text-black font-bold mb-8 group-hover:scale-110 transition-transform">0{i+1}</div>
-							<h3 class="text-2xl font-serif mb-4 text-sikuani-primary">{v.title}</h3>
-							<p class="text-sikuani-on-surface/70 font-sans leading-relaxed">{v.desc}</p>
+		<!-- Valores Grid -->
+		<section class="py-24 max-w-[1200px] mx-auto px-6 border-b border-hairline">
+			<SectionHeader title="Nuestros Valores Fundacionales" subtitle="Pilares Orgánicos" centered={true} />
+			
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 values-grid">
+				{values.map((v, i) => (
+					<div class="value-item h-full">
+						<div class="p-10 rounded-md bg-canvas border border-hairline hover:border-primary/20 transition-all duration-500 group shadow-hover flex flex-col justify-between h-full">
+							<div>
+								<!-- Número estilizado -->
+								<div class="h-12 w-12 rounded-sm bg-accent text-ink flex items-center justify-center font-serif font-bold text-lg mb-8 group-hover:scale-105 transition-transform duration-300">
+									0{i+1}
+								</div>
+								<h3 class="text-xl font-serif font-bold mb-4 text-ink">{v.title}</h3>
+							</div>
+							<p class="text-body font-sans text-sm leading-relaxed mt-4">{v.desc}</p>
 						</div>
-					))}
-					{content.dark.values.map((v, i) => (
-						<div class="p-12 rounded-sikuani-card bg-sikuani-surface border border-sikuani-primary/10 hover:border-sikuani-primary/40 transition-all duration-500 hidden dark:block group">
-							<div class="h-12 w-12 rounded-sikuani-org bg-sikuani-accent flex items-center justify-center text-black font-bold mb-8 group-hover:scale-110 transition-transform">0{i+1}</div>
-							<h3 class="text-2xl font-serif mb-4 text-sikuani-primary">{v.title}</h3>
-							<p class="text-sikuani-on-surface/70 font-sans leading-relaxed">{v.desc}</p>
-						</div>
-					))}
-				</div>
+					</div>
+				))}
 			</div>
 		</section>
 
-		<!-- Team Section teaser -->
-		<section class="py-32 bg-sikuani-surface relative overflow-hidden">
-			<div class="container mx-auto px-4 text-center">
-				<SectionHeader title="Equipo Sikuani" subtitle="Talento Humano" centered={true} />
-				<p class="text-xl text-sikuani-on-surface/80 max-w-3xl mx-auto mb-16 font-sans">
-					Detrás de cada rincón de Sikuani hay un equipo apasionado que comparte una visión común: crear un espacio donde la tecnología y la naturaleza coexistan en perfecta armonía. Nuestro equipo es tan diverso como el ecosistema que nos rodea, con expertos en hospitalidad, sostenibilidad, diseño y tecnología trabajando juntos para hacer realidad esta visión.
+		<!-- Equipo Sikuani -->
+		<section class="py-24 bg-canvas transition-colors duration-500">
+			<div class="max-w-[1200px] mx-auto px-6 text-center">
+				<SectionHeader title="Guardianes del Refugio" subtitle="Talento Humano" centered={true} />
+				
+				<p class="text-base text-body max-w-3xl mx-auto mb-16 font-sans leading-relaxed">
+					Detrás de cada detalle en Sikuani hay un equipo apasionado que comparte una visión de Sostenibilidad y amor por la tierra. Expertos en hospitalidad regenerativa, botánica, gastronomía local y terapias de bienestar dedicados a hacer de tu estadía una inmersión inolvidable.
 				</p>
-				<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-					{[1, 2, 3, 4].map(i => (
-						<div class="aspect-square rounded-full bg-sikuani-bg border-4 border-sikuani-primary/10 overflow-hidden grayscale hover:grayscale-0 transition-all duration-500">
-							<img src={`https://i.pravatar.cc/300?img=${i+10}`} alt="Team Member" />
+				
+				<div class="grid grid-cols-2 md:grid-cols-4 gap-8 team-grid">
+					{team.map(member => (
+						<div class="team-item flex flex-col items-center group select-none">
+							<!-- Retrato redondo -->
+							<div class="aspect-square w-36 h-36 rounded-full overflow-hidden border-2 border-primary/20 bg-surface-soft group-hover:border-primary transition-colors duration-300 group-hover:scale-105 transition-transform duration-500 shadow-hover">
+								<img 
+									src={member.img} 
+									alt={member.name} 
+									class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+								/>
+							</div>
+							<h4 class="font-sans font-bold text-ink mt-6 text-sm">{member.name}</h4>
+							<p class="text-[10px] text-muted uppercase font-bold tracking-widest mt-1">{member.role}</p>
 						</div>
 					))}
 				</div>
 			</div>
 		</section>
 	</main>
-
 </Layout>
+
+<script>
+	import { gsap } from 'gsap';
+	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+	
+	gsap.registerPlugin(ScrollTrigger);
+
+	// Animaciones Hero
+	gsap.from(".hero-tag", { opacity: 0, y: -20, duration: 0.8, ease: "power2.out" });
+	gsap.from(".hero-title", { opacity: 0, y: 30, duration: 1.2, delay: 0.2, ease: "power3.out" });
+	gsap.from(".hero-desc", { opacity: 0, y: 20, duration: 1, delay: 0.4, ease: "power2.out" });
+
+	// Animaciones de scroll (ScrollTrigger)
+	
+	// Misión
+	gsap.from(".mission-content", {
+		scrollTrigger: {
+			trigger: ".mission-section",
+			start: "top 80%",
+		},
+		opacity: 0,
+		x: -40,
+		duration: 1,
+		ease: "power2.out"
+	});
+
+	gsap.from(".mission-img", {
+		scrollTrigger: {
+			trigger: ".mission-section",
+			start: "top 80%",
+		},
+		opacity: 0,
+		x: 40,
+		duration: 1,
+		ease: "power2.out"
+	});
+
+	// Valores Fundacionales (Stagger)
+	gsap.from(".value-item", {
+		scrollTrigger: {
+			trigger: ".values-grid",
+			start: "top 85%",
+		},
+		opacity: 0,
+		y: 40,
+		duration: 0.8,
+		stagger: 0.15,
+		ease: "power2.out"
+	});
+
+	// Equipo (Stagger)
+	gsap.from(".team-item", {
+		scrollTrigger: {
+			trigger: ".team-grid",
+			start: "top 85%",
+		},
+		opacity: 0,
+		y: 35,
+		duration: 0.8,
+		stagger: 0.15,
+		ease: "power2.out"
+	});
+</script>

@@ -1,47 +1,114 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import SectionHeader from '../components/SectionHeader.astro';
+import Button from '../components/Button.astro';
 
 const images = [
-	{ src: "https://images.unsplash.com/photo-1487525219605-eadb39ae229c?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Ym9zcXVlJTIwcHJvZnVuZG98ZW58MHx8MHx8fDA%3D", title: "Bosque Profundo" },
-	{ src: "https://cdn.cizucu.com/images/photos/xcekTspli1jAjwfH8M2S.jpg?auto=format%2Ccompress&fit=max&w=1536&q=90", title: "Luz Filtrada" },
-	{ src: "https://img.freepik.com/foto-gratis/colinas-boscosas-rodeadas-niebla-cielo-nublado_181624-5455.jpg?semt=ais_hybrid&w=740&q=80", title: "Niebla Matinal" },
-	{ src: "https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&q=80&w=800", title: "Cumbres Verdes" },
-	{ src: "https://w0.peakpx.com/wallpaper/251/755/HD-wallpaper-hidden-trails-forest-nature-road-trail.jpg", title: "Sendero Oculto" },
-	{ src: "https://www.adobe.com/la/creativecloud/photography/discover/media_155373f24dc83487b560dbd9c0ff229084addc2c3.png?width=750&format=png&optimize=medium", title: "Reflejo de Agua" },
+	{ 
+		src: "https://images.unsplash.com/photo-1487525219605-eadb39ae229c?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Ym9zcXVlJTIwcHJvZnVuZG98ZW58MHx8MHx8fDA%3D", 
+		title: "Bosque Profundo", 
+		category: "Entorno Salvaje" 
+	},
+	{ 
+		src: "https://cdn.cizucu.com/images/photos/xcekTspli1jAjwfH8M2S.jpg?auto=format%2Ccompress&fit=max&w=1536&q=90", 
+		title: "Luz Filtrada", 
+		category: "Arquitectura Pasiva" 
+	},
+	{ 
+		src: "https://img.freepik.com/foto-gratis/colinas-boscosas-rodeadas-niebla-cielo-nublado_181624-5455.jpg?semt=ais_hybrid&w=740&q=80", 
+		title: "Niebla Matinal", 
+		category: "Caminos Sagrados" 
+	},
+	{ 
+		src: "https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&q=80&w=800", 
+		title: "Cumbres Verdes", 
+		category: "Cúpula de Bienestar" 
+	},
+	{ 
+		src: "https://w0.peakpx.com/wallpaper/251/755/HD-wallpaper-hidden-trails-forest-nature-road-trail.jpg", 
+		title: "Sendero Oculto", 
+		category: "Desconexión Activa" 
+	},
+	{ 
+		src: "https://www.adobe.com/la/creativecloud/photography/discover/media_155373f24dc83487b560dbd9c0ff229084addc2c3.png?width=750&format=png&optimize=medium", 
+		title: "Reflejo del Agua", 
+		category: "Aguas Regenerativas" 
+	},
 ];
 ---
 
-<Layout title="Galería - Sikuani">
-
-	<main class="transition-colors duration-700 bg-sikuani-bg min-h-screen">
-		<section class="py-24">
-			<div class="container mx-auto px-4">
+<Layout title="Galería - Sikuani Ecohotel">
+	<main class="bg-canvas text-body min-h-screen overflow-x-hidden">
+		<section class="py-24 max-w-[1200px] mx-auto px-6">
+			<div class="gallery-header text-center">
 				<SectionHeader 
-					title="Galería Visual" 
+					title="Nuestra Galería Visual" 
 					subtitle="Inspiración Natural" 
 					centered={true} 
 				/>
 				
-				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
-					{images.map(img => (
-						<div class="group cursor-pointer overflow-hidden rounded-sikuani-card border border-sikuani-primary/10 bg-sikuani-surface shadow-lg">
-							<div class="aspect-square overflow-hidden">
+				<p class="text-base text-body max-w-2xl mx-auto text-center mb-16 font-sans leading-relaxed gallery-desc">
+					Recorre visualmente la calma de nuestras instalaciones, el amanecer cubierto de niebla y los detalles arquitectónicos diseñados para restaurar tu paz interior.
+				</p>
+			</div>
+			
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16 gallery-grid">
+				{images.map(img => (
+					<div class="gallery-item flex flex-col justify-between h-full">
+						<div class="group bg-canvas dark:bg-dark-surface border border-hairline dark:border-dark-hairline rounded-md overflow-hidden transition-all duration-500 shadow-hover hover:border-primary/20 dark:hover:border-primary/20 hover:bg-canvas dark:hover:bg-dark-surface-soft flex flex-col justify-between select-none h-full">
+							<!-- Imagen en contenedor con relación 1:1 o 4:3 -->
+							<div class="aspect-4/3 overflow-hidden bg-surface-soft dark:bg-dark-surface-soft relative">
 								<img 
 									src={img.src} 
 									alt={img.title} 
-									class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+									class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
 								/>
+								<!-- Badge Categoría -->
+								<div class="absolute bottom-4 left-4 bg-canvas/90 dark:bg-dark-surface/90 text-ink dark:text-dark-ink text-[10px] font-sans font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-md">
+									{img.category}
+								</div>
 							</div>
-							<div class="p-6">
-								<h3 class="text-xl font-serif text-sikuani-primary">{img.title}</h3>
-								<p class="text-sm font-sans text-sikuani-on-surface/60 uppercase tracking-widest mt-2">Sikuani Essence</p>
+							
+							<!-- Datos de Imagen -->
+							<div class="p-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-t border-hairline/60 dark:border-dark-hairline/60">
+								<div>
+									<h3 class="text-lg font-serif text-ink font-semibold tracking-tight">{img.title}</h3>
+									<p class="text-[10px] font-sans font-bold text-muted uppercase tracking-widest mt-1">Sikuani Essence</p>
+								</div>
+								
+								<!-- Botón Secundario Auxiliar -->
+								<Button variant="secondary" class="h-9 px-3 text-[10px] font-bold uppercase tracking-wider">
+									Ampliar
+								</Button>
 							</div>
 						</div>
-					))}
-				</div>
+					</div>
+				))}
 			</div>
 		</section>
 	</main>
-
 </Layout>
+
+<script>
+	import { gsap } from 'gsap';
+	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+	
+	gsap.registerPlugin(ScrollTrigger);
+
+	// Animación cabecera
+	gsap.from(".gallery-header", { opacity: 0, y: -20, duration: 0.8, ease: "power2.out" });
+	gsap.from(".gallery-desc", { opacity: 0, y: 15, duration: 0.8, delay: 0.2, ease: "power2.out" });
+
+	// Animación de la grilla de fotos al hacer scroll (Stagger)
+	gsap.from(".gallery-item", {
+		scrollTrigger: {
+			trigger: ".gallery-grid",
+			start: "top 85%",
+		},
+		opacity: 0,
+		y: 40,
+		duration: 0.8,
+		stagger: 0.15,
+		ease: "power2.out"
+	});
+</script>

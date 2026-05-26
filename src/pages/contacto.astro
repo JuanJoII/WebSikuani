@@ -4,93 +4,136 @@ import SectionHeader from '../components/SectionHeader.astro';
 import Button from '../components/Button.astro';
 ---
 
-<Layout title="Contacto - Sikuani">
-
-	<main class="transition-colors duration-700 bg-sikuani-bg min-h-screen">
-			<div class="container mx-auto px-4">
-				<div class="flex flex-col lg:flex-row gap-16 items-start">
-					<!-- Contact Info -->
-					<div class="w-full lg:w-1/2">
-						<SectionHeader 
-							title="Contáctanos" 
-							subtitle="Experiencias conscientes en el corazón del Amazonas" 
-						/>
-						<p class="text-xl text-sikuani-on-surface/80 font-sans leading-relaxed mt-8 max-w-lg">
-							SIKUANI Vibra con la naturaleza... y permite que el alma recupere su ritmo original.
-						</p>
+<Layout title="Contacto - Sikuani Ecohotel">
+	<main class="bg-canvas text-body min-h-screen overflow-x-hidden">
+		<section class="py-24 max-w-[1200px] mx-auto px-6">
+			<div class="flex flex-col lg:flex-row gap-16 items-start contact-container">
+				
+				<!-- Columna Izquierda: Información de Contacto -->
+				<div class="w-full lg:w-1/2 space-y-12 contact-info">
+					<SectionHeader 
+						title="Contáctanos" 
+						subtitle="Experiencias conscientes en el bosque alto" 
+					/>
+					
+					<p class="text-lg text-body font-sans leading-relaxed">
+						Permite que el murmullo del bosque guíe tu viaje. Si deseas coordinar tu reserva, planear un retiro grupal o tienes inquietudes sobre cómo llegar a nuestro refugio en Cajicá, estamos a tu total disposición.
+					</p>
+					
+					<div class="space-y-8">
+						<!-- Ubicación -->
+						<div class="flex items-start gap-6 group select-none contact-item">
+							<div class="h-12 w-12 rounded-sm bg-primary/10 text-primary flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform duration-300">
+								<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+									<path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+								</svg>
+							</div>
+							<div>
+								<h4 class="text-base font-serif font-bold text-ink">Coordenadas del Refugio</h4>
+								<p class="text-sm text-muted font-sans mt-1">Cajicá, Cundinamarca, Colombia</p>
+							</div>
+						</div>
 						
-						<div class="mt-12 space-y-8">
-							<div class="flex items-start gap-6">
-								<div class="h-12 w-12 rounded-sikuani-org bg-sikuani-primary/10 flex items-center justify-center text-sikuani-primary shrink-0">
-									<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-									</svg>
-								</div>
-								<div>
-									<h4 class="text-lg font-serif text-sikuani-primary">Ubicación</h4>
-									<p class="text-sikuani-on-surface/70 font-sans mt-1">Cajicá, Cundinamarca, Colombia</p>
-								</div>
+						<!-- Canales Digitales -->
+						<div class="flex items-start gap-6 group select-none contact-item">
+							<div class="h-12 w-12 rounded-sm bg-primary/10 text-primary flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform duration-300">
+								<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+								</svg>
 							</div>
-							
-							<div class="flex items-start gap-6">
-								<div class="h-12 w-12 rounded-sikuani-org bg-sikuani-primary/10 flex items-center justify-center text-sikuani-primary shrink-0">
-									<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-									</svg>
-								</div>
-								<div>
-									<h4 class="text-lg font-serif text-sikuani-primary">Canales Digitales</h4>
-									<p class="text-sikuani-on-surface/70 font-sans mt-1">hola@sikuani-resort.eco</p>
-									<p class="text-sikuani-on-surface/70 font-sans">+57 (300) 456 7890</p>
-								</div>
+							<div>
+								<h4 class="text-base font-serif font-bold text-ink">Canales de Atención</h4>
+								<p class="text-sm text-muted font-sans mt-1">hola@sikuani-resort.eco</p>
+								<p class="text-sm text-muted font-sans mt-1">+57 (300) 456 7890</p>
 							</div>
+						</div>
 
-							<div class="flex items-start gap-6">
-								<div class="h-12 w-12 rounded-sikuani-org bg-sikuani-primary/10 flex items-center justify-center text-sikuani-primary shrink-0">
-									<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-									</svg>
-								</div>
-								<div>
-									<h4 class="text-lg font-serif text-sikuani-primary">Atención</h4>
-									<p class="text-sikuani-on-surface/70 font-sans mt-1 italic">Recepción 24/7 para huéspedes.</p>
-									<p class="text-sikuani-on-surface/70 font-sans mt-1">Lun-Vie 08:00 - 18:00 (Admin).</p>
-								</div>
+						<!-- Recepción -->
+						<div class="flex items-start gap-6 group select-none contact-item">
+							<div class="h-12 w-12 rounded-sm bg-primary/10 text-primary flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform duration-300">
+								<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+								</svg>
+							</div>
+							<div>
+								<h4 class="text-base font-serif font-bold text-ink">Horarios de Recepción</h4>
+								<p class="text-sm text-muted font-sans mt-1">Huéspedes: Recepción activa 24/7</p>
+								<p class="text-sm text-muted font-sans mt-1">Administrativo: Lun-Vie 08:00 - 18:00</p>
 							</div>
 						</div>
 					</div>
-
-					<!-- Contact Form -->
-					<div class="w-full lg:w-1/2">
-						<form class="bg-sikuani-surface p-10 rounded-sikuani-card border border-sikuani-primary/10 shadow-2xl space-y-8">
-							<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-								<div class="space-y-2">
-									<label class="text-sm font-bold uppercase tracking-widest text-sikuani-primary/60">Nombre</label>
-									<input type="text" class="w-full bg-sikuani-bg/30 border-b-2 border-sikuani-primary/20 py-3 px-1 focus:border-sikuani-primary transition-colors outline-none font-sans" placeholder="Su nombre" />
-								</div>
-								<div class="space-y-2">
-									<label class="text-sm font-bold uppercase tracking-widest text-sikuani-primary/60">Correo</label>
-									<input type="email" class="w-full bg-sikuani-bg/30 border-b-2 border-sikuani-primary/20 py-3 px-1 focus:border-sikuani-primary transition-colors outline-none font-sans" placeholder="su@correo.com" />
-								</div>
-							</div>
-
-							<div class="space-y-2">
-								<label class="text-sm font-bold uppercase tracking-widest text-sikuani-primary/60">Asunto</label>
-								<input type="text" class="w-full bg-sikuani-bg/30 border-b-2 border-sikuani-primary/20 py-3 px-1 focus:border-sikuani-primary transition-colors outline-none font-sans" placeholder="Motivo de su mensaje" />
-							</div>
-							
-							<div class="space-y-2">
-								<label class="text-sm font-bold uppercase tracking-widest text-sikuani-primary/60">Mensaje</label>
-								<textarea rows="4" class="w-full bg-sikuani-bg/30 border-b-2 border-sikuani-primary/20 py-3 px-1 focus:border-sikuani-primary transition-colors outline-none font-sans resize-none" placeholder="¿Cómo podemos asistirle?"></textarea>
-							</div>
-							
-							<Button variant="primary" class="w-full py-5 text-lg uppercase tracking-[0.2em] font-bold">Enviar Mensaje</Button>
-						</form>
-					</div>
 				</div>
+
+				<!-- Columna Derecha: Formulario de Contacto -->
+				<div class="w-full lg:w-1/2 contact-form">
+					<form class="bg-canvas dark:bg-dark-surface p-8 md:p-10 rounded-md border border-hairline dark:border-dark-hairline shadow-hover space-y-6 select-none">
+						<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+							<div class="space-y-2">
+								<label class="text-[10px] font-bold uppercase tracking-widest text-primary">Nombre</label>
+								<input 
+									type="text" 
+									required
+									class="w-full bg-surface-soft dark:bg-dark-surface-soft border border-hairline dark:border-dark-hairline py-3 px-4 rounded-sm text-ink dark:text-dark-ink font-sans outline-none focus:border-2 focus:border-primary transition-all text-sm" 
+									placeholder="Tu nombre completo" 
+								/>
+							</div>
+							<div class="space-y-2">
+								<label class="text-[10px] font-bold uppercase tracking-widest text-primary">Correo</label>
+								<input 
+									type="email" 
+									required
+									class="w-full bg-surface-soft dark:bg-dark-surface-soft border border-hairline dark:border-dark-hairline py-3 px-4 rounded-sm text-ink dark:text-dark-ink font-sans outline-none focus:border-2 focus:border-primary transition-all text-sm" 
+									placeholder="tu@correo.com" 
+								/>
+							</div>
+						</div>
+
+						<div class="space-y-2">
+							<label class="text-[10px] font-bold uppercase tracking-widest text-primary">Asunto</label>
+							<input 
+								type="text" 
+								required
+								class="w-full bg-surface-soft dark:bg-dark-surface-soft border border-hairline dark:border-dark-hairline py-3 px-4 rounded-sm text-ink dark:text-dark-ink font-sans outline-none focus:border-2 focus:border-primary transition-all text-sm" 
+								placeholder="Motivo de tu mensaje" 
+							/>
+						</div>
+						
+						<div class="space-y-2">
+							<label class="text-[10px] font-bold uppercase tracking-widest text-primary">Mensaje</label>
+							<textarea 
+								rows="4" 
+								required
+								class="w-full bg-surface-soft dark:bg-dark-surface-soft border border-hairline dark:border-dark-hairline py-3 px-4 rounded-sm text-ink dark:text-dark-ink font-sans outline-none focus:border-2 focus:border-primary transition-all text-sm resize-none" 
+								placeholder="¿Cómo podemos asistirte en tu viaje?"
+							></textarea>
+						</div>
+						
+						<Button variant="primary" class="w-full py-6 text-xs uppercase tracking-wider font-bold">
+							Enviar Mensaje
+						</Button>
+					</form>
+				</div>
+
 			</div>
 		</section>
 	</main>
-
 </Layout>
+
+<script>
+	import { gsap } from 'gsap';
+	
+	// Animaciones de entrada coordinadas
+	gsap.from(".contact-info", { opacity: 0, x: -40, duration: 1, ease: "power2.out" });
+	gsap.from(".contact-form", { opacity: 0, x: 40, duration: 1, ease: "power2.out" });
+	
+	// Animación con stagger sobre los ítems de contacto a la izquierda
+	gsap.from(".contact-item", {
+		opacity: 0,
+		y: 20,
+		duration: 0.6,
+		stagger: 0.15,
+		delay: 0.4,
+		ease: "power2.out"
+	});
+</script>

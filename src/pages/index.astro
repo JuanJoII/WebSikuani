@@ -2,212 +2,295 @@
 import Layout from '../layouts/Layout.astro';
 import Button from '../components/Button.astro';
 import SectionHeader from '../components/SectionHeader.astro';
+import SearchPill from '../components/SearchPill.astro';
+import CabinCard from '../components/CabinCard.astro';
+import AmenityRow from '../components/AmenityRow.astro';
 
 const base = import.meta.env.BASE_URL;
 
-// Datos duales según el diseño de Stitch
-const content = {
-	light: {
-		hero: {
-			tag: "Ecohotel",
-			title: "Sikuani Ecohotel",
-			description: "Donde la arquitectura de lujo se funde con la serenidad del bosque virgen. Un refugio consciente para el alma.",
-			primaryBtn: "Explorar Refugio",
-			secondaryBtn: "Nuestra Historia"
-		},
-		testimonials: [
-			{ name: "Alejandro M.", text: "Una experiencia transformadora. La conexión con la naturaleza es absoluta y el diseño impecable de las cabañas supera todas mis expectativas.", role: "Huésped" },
-			{ name: "Elena R.", text: "Sikuani no es solo un hotel, es un santuario. La paz que se respira aquí es inigualable. El servicio es cálido y el diseño es simplemente hermoso.", role: "Huésped" },
-			{ name: "Javier H.", text: "Increíble como han logrado integrar la arquitectura con el entorno. Cada detalle está pensado para el confort y el respeto por la naturaleza.", role: "Huésped" }
-		]
+const cabins = [
+	{
+		title: "Eco-Suite Rainforest",
+		image: "https://images.unsplash.com/photo-1587061949409-02df41d5e562?auto=format&fit=crop&q=80&w=800",
+		price: "$300.00",
+		rating: "4.90",
+		amenities: ['habitaciones', 'duchas', 'spa', 'recepcion']
 	},
-	dark: {
-		hero: {
-			tag: "Ecohotel",
-			title: "Sikuani Ecohotel",
-			description: "Donde la arquitectura de lujo se funde con la serenidad del bosque. Un refugio consciente para el alma.",
-			primaryBtn: "Reservar Ahora",
-			secondaryBtn: "Ver Experiencias"
-		},
-		testimonials: [
-			{ name: "elena martinez", text: "Una experiencia que redefine el lujo. Vivir rodeada de los sonidos de la selva es algo que nunca olvidaré. El diseño es simplemente espectacular.", role: "Huésped" },
-			{ name: "pablo monti", text: "Única, vibrante, juvenil. Impresionante la integración entre la estética Sikuani y el cuidado de nuestro futuro de la manera más consciente.", role: "Huésped" },
-			{ name: "sofia rizzo", text: "Descubrí una paz que no sabía que necesitaba. Gracias al personal excepcional y la atención al detalle en cada rincón de este paraíso.", role: "Huésped" }
-		],
-		experiences: [
-			{ title: "Rituales de Bienestar", icon: "✨" },
-			{ title: "Cata de Autor", icon: "🍷" },
-			{ title: "Yoga al Aire", icon: "🧘" },
-			{ title: "Inmersión Natural", icon: "🌿" }
-		]
+	{
+		title: "Nido del Viento Glamping",
+		image: "https://images.unsplash.com/photo-1533759413974-9e15f3b745ac?auto=format&fit=crop&q=80&w=800",
+		price: "$250.00",
+		rating: "4.85",
+		amenities: ['habitaciones', 'parrilla', 'zonas_verdes', 'recepcion']
+	},
+	{
+		title: "Domo Ancestral",
+		image: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&q=80&w=800",
+		price: "$280.00",
+		rating: "4.95",
+		amenities: ['habitaciones', 'duchas', 'spa', 'zonas_verdes']
 	}
-};
+];
+
+const testimonials = [
+	{ name: "Alejandro M.", text: "Una experiencia transformadora. La conexión con la naturaleza es absoluta y el diseño impecable de las cabañas supera todas mis expectativas.", role: "Huésped Frecuente" },
+	{ name: "Elena R.", text: "Sikuani no es solo un hotel, es un santuario. La paz que se respira aquí es inigualable. El servicio es cálido y el diseño es simplemente hermoso.", role: "Huésped de Bienestar" },
+	{ name: "Javier H.", text: "Increíble como han logrado integrar la arquitectura con el entorno. Cada detalle está pensado para el confort y el respeto por la naturaleza.", role: "Aventurero Consciente" }
+];
 ---
 
-<Layout title="Home - Sikuani">
-	<main>
+<Layout title="Inicio - Sikuani Ecohotel">
+	<main class="bg-canvas text-body overflow-x-hidden">
 		<!-- Hero Section -->
-		<section class="relative min-h-screen flex items-center pt-20 pb-32 overflow-hidden bg-sikuani-bg transition-colors duration-700">
-			<!-- Background Image Placeholder based on Stitch -->
-			<div class="absolute inset-0 z-0">
-				<!-- Light Image: Cabin in woods -->
-				<div class="absolute inset-0 bg-[url('https://cdn.wallpapersafari.com/81/64/6o3WkH.jpg')] bg-cover bg-center opacity-20 dark:opacity-0 transition-opacity duration-700"></div>
-				<!-- Dark Image: Jungle/Tiger vibe -->
-				<div class="absolute inset-0 bg-[url('https://cdn.wallpapersafari.com/81/64/6o3WkH.jpg')] bg-cover bg-center opacity-0 dark:opacity-30 transition-opacity duration-700"></div>
-				<div class="absolute inset-0 bg-linear-to-b from-sikuani-bg/20 via-sikuani-bg to-sikuani-bg"></div>
+		<section class="relative min-h-[90vh] flex items-center pt-12 pb-24 overflow-hidden border-b border-hairline transition-colors duration-500">
+			<!-- Background Image con opacidad adaptada -->
+			<div class="absolute inset-0 z-0 select-none">
+				<img 
+					src="https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&q=80&w=1600" 
+					alt="Bosque profundo" 
+					class="w-full h-full object-cover opacity-15 dark:opacity-10 transition-opacity duration-500" 
+				/>
+				<div class="absolute inset-0 bg-gradient-to-b from-canvas/30 via-canvas to-canvas"></div>
 			</div>
 			
-			<div class="container mx-auto px-4 relative z-10">
-				<div class="max-w-4xl">
-					<span class="inline-block py-1 px-4 rounded-full bg-sikuani-primary/10 text-sikuani-primary font-sans font-bold text-sm mb-8 tracking-widest uppercase">
-						<span class="block dark:hidden">{content.light.hero.tag}</span>
-						<span class="hidden dark:block">{content.dark.hero.tag}</span>
+			<div class="max-w-[1200px] mx-auto px-6 relative z-10 w-full">
+				<div class="max-w-3xl text-center md:text-left">
+					<span class="inline-block py-1 px-4 rounded-full bg-primary/10 text-primary font-sans font-bold text-xs mb-8 tracking-widest uppercase hero-tag">
+						Santuario Natural & Bienestar
 					</span>
 					
-					<h1 class="text-6xl md:text-8xl lg:text-9xl font-serif text-sikuani-primary mb-8 leading-[0.9] tracking-tighter">
-						<span class="block dark:hidden">{content.light.hero.title}</span>
-						<span class="hidden dark:block">{content.dark.hero.title}</span>
+					<h1 class="text-5xl md:text-7xl lg:text-8xl font-serif text-ink mb-8 leading-[1.1] tracking-tighter hero-title">
+						Sikuani <br class="hidden md:block" />Ecohotel.
 					</h1>
 					
-					<p class="text-xl md:text-2xl text-sikuani-on-surface/90 max-w-2xl mb-12 font-sans leading-relaxed">
-						<span class="block dark:hidden">{content.light.hero.description}</span>
-						<span class="hidden dark:block">{content.dark.hero.description}</span>
+					<p class="text-lg md:text-xl text-body max-w-2xl mb-12 font-sans leading-relaxed hero-desc">
+						Donde la arquitectura de lujo consciente se funde con la serenidad del bosque virgen. Un refugio diseñado para reconectar el alma con la naturaleza y restaurar tu ritmo original.
 					</p>
 					
-					<div class="flex flex-wrap gap-6">
-						<Button href={`${base}reservas/`} variant="primary" class="text-lg px-12 py-5">
-							<span class="block dark:hidden">{content.light.hero.primaryBtn}</span>
-							<span class="hidden dark:block">{content.dark.hero.primaryBtn}</span>
+					<div class="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 mb-16 hero-actions">
+						<Button href={`${base}reservas/`} variant="primary" class="w-full sm:w-auto uppercase tracking-wider text-xs px-8">
+							Explorar Refugio
 						</Button>
-						<Button href={`${base}sobre-nosotros/`} variant="secondary" class="text-lg px-12 py-5">
-							<span class="block dark:hidden">{content.light.hero.secondaryBtn}</span>
-							<span class="hidden dark:block">{content.dark.hero.secondaryBtn}</span>
+						<Button href={`${base}sobre-nosotros/`} variant="secondary" class="w-full sm:w-auto uppercase tracking-wider text-xs px-8">
+							Nuestra Historia
 						</Button>
 					</div>
+				</div>
+
+				<!-- Barra de búsqueda SearchPill integrada en la base del Hero -->
+				<div class="mt-8 hero-search-pill">
+					<SearchPill />
 				</div>
 			</div>
 		</section>
 
-		<!-- Arquitectura Consciente Section (Layout Swap) -->
-		<section class="py-32 bg-sikuani-surface overflow-hidden transition-colors duration-700">
-			<div class="container mx-auto px-4">
+		<!-- Catálogo de Cabañas -->
+		<section class="py-24 max-w-[1200px] mx-auto px-6">
+			<SectionHeader 
+				title="Nuestros Refugios Exclusivos" 
+				subtitle="Espacios de Calma" 
+				centered={true}
+			/>
+			
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16 cabin-grid">
+				{cabins.map(cabin => (
+					<div class="cabin-card-item h-full">
+						<CabinCard 
+							title={cabin.title}
+							image={cabin.image}
+							price={cabin.price}
+							rating={cabin.rating}
+							amenities={cabin.amenities}
+							href={`${base}reservas/`}
+						/>
+					</div>
+				))}
+			</div>
+		</section>
+
+		<!-- Arquitectura Consciente Section -->
+		<section class="py-24 border-y border-hairline bg-surface-soft/40 transition-colors duration-500 arch-section">
+			<div class="max-w-[1200px] mx-auto px-6">
 				<div class="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
-					<!-- Image: Left in Dark, Right in Light -->
-					<div class="w-full lg:w-1/2 order-1 dark:order-1 transition-all duration-700">
-						<div class="aspect-4/5 rounded-sikuani-card overflow-hidden bg-sikuani-bg relative group">
-							<img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/12/f5/91/c0/somos-un-ecohotel-con.jpg?w=900&h=500&s=1" alt="Architecture" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
-							<div class="absolute inset-0 border-20 border-sikuani-bg/20"></div>
+					<!-- Imagen a la izquierda (4:5) -->
+					<div class="w-full lg:w-1/2 arch-img">
+						<div class="aspect-4/5 rounded-md overflow-hidden bg-surface-soft border border-hairline shadow-hover relative group select-none">
+							<img 
+								src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/12/f5/91/c0/somos-un-ecohotel-con.jpg?w=900&h=500&s=1" 
+								alt="Arquitectura Glamping Sikuani" 
+								class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+							/>
 						</div>
 					</div>
 
-					<!-- Light Mode Exclusive Content -->
-					<div class="block dark:hidden space-y-8 animate-fade-in">
-						<div class="flex items-center gap-6">
-							<span class="text-6xl font-serif text-sikuani-accent">0%</span>
-							<span class="text-xl font-sans font-bold uppercase tracking-widest text-sikuani-primary">Impacto Ambiental</span>
-						</div>
-						<ul class="space-y-4">
-							<li class="flex items-center gap-4 text-sikuani-on-surface font-semibold">
-								<span class="h-2 w-2 bg-sikuani-accent rounded-full"></span>
-								Materiales Orgánicos
-							</li>
-							<li class="flex items-center gap-4 text-sikuani-on-surface font-semibold">
-								<span class="h-2 w-2 bg-sikuani-accent rounded-full"></span>
-								Energía 100% Renovable
-							</li>
-						</ul>
-					</div>
+					<!-- Texto a la derecha -->
+					<div class="w-full lg:w-1/2 space-y-8 arch-content">
+						<SectionHeader 
+							title="Arquitectura que respira con la selva" 
+							subtitle="Biomímesis & Equilibrio"
+						/>
+						
+						<p class="text-base text-body leading-relaxed font-sans">
+							Nuestras estructuras no compiten con la naturaleza; se funden con ella. Construidas sobre pilares elevados para proteger la flora nativa y el flujo del agua subterránea, cada cabaña es un testimonio de diseño pasivo y respeto biológico.
+						</p>
 
-					<!-- Dark Mode Exclusive Content -->
-					<div class="hidden dark:block space-y-8 animate-fade-in">							<div class="flex items-center gap-6">
-								<span class="text-6xl font-serif text-sikuani-primary">0%</span>
-								<span class="text-xl font-sans font-bold uppercase tracking-widest">Impacto Ambiental</span>
+						<div class="grid grid-cols-2 gap-8 pt-4">
+							<div class="space-y-2 border-l-2 border-primary pl-4">
+								<span class="text-4xl font-serif text-primary font-bold">0%</span>
+								<span class="block text-xs font-sans font-bold uppercase tracking-widest text-muted">Impacto Forestal</span>
 							</div>
-							<ul class="space-y-4">
-								<li class="flex items-center gap-4 text-sikuani-primary font-bold">
-									<span class="h-2 w-2 bg-sikuani-primary rounded-full"></span>
-									Materiales Orgánicos
-								</li>
-								<li class="flex items-center gap-4 text-sikuani-primary font-bold">
-									<span class="h-2 w-2 bg-sikuani-primary rounded-full"></span>
-									Energía 100% Renovable
-								</li>
-							</ul>
+							<div class="space-y-2 border-l-2 border-primary pl-4">
+								<span class="text-4xl font-serif text-primary font-bold counter-100">0%</span>
+								<span class="block text-xs font-sans font-bold uppercase tracking-widest text-muted">Energía Limpia</span>
+							</div>
 						</div>
+
+						<p class="text-sm italic text-muted font-sans border-t border-hairline pt-6">
+							"Proporcionar una experiencia de lujo que no compita con el silencio, sino que lo amplifique. Aquí, la arquitectura desaparece para dejar paso a la vida."
+						</p>
 					</div>
 				</div>
 			</div>
 		</section>
 
-		<!-- Testimonials Section -->
-		<section class="py-32 bg-sikuani-bg transition-colors duration-700">
-			<div class="container mx-auto px-4">
+		<!-- Servicios Completos -->
+		<section class="py-24 max-w-[1200px] mx-auto px-6 border-b border-hairline services-section">
+			<SectionHeader 
+				title="Experiencia de Inmersión Sikuani" 
+				subtitle="Nuestros Servicios" 
+				centered={true}
+			/>
+			<div class="mt-16 services-row-anim">
+				<AmenityRow compact={false} />
+			</div>
+		</section>
+
+		<!-- Testimonios Section -->
+		<section class="py-24 bg-canvas transition-colors duration-500">
+			<div class="max-w-[1200px] mx-auto px-6">
 				<SectionHeader 
-					title="!Nuestros Huéspedes Hablan!" 
-					subtitle="Lo que dicen nuestros huéspedes" 
+					title="Lo que el silencio les enseña" 
+					subtitle="Voces de Nuestros Huéspedes" 
 					centered={true}
 				/>
 				
-				<div class="grid grid-cols-1 md:grid-cols-3 gap-12 mt-20">
-					{content.light.testimonials.map((t, i) => (
-						<div class="p-12 rounded-sikuani-card bg-sikuani-surface border border-sikuani-primary/5 hover:border-sikuani-primary/20 transition-all duration-500 block dark:hidden">
-							<p class="text-xl italic font-serif mb-8 text-sikuani-on-surface/90 leading-relaxed">"{t.text}"</p>
-							<div class="flex items-center gap-4">
-								<div class="h-12 w-12 rounded-full bg-sikuani-primary/10"></div>
-								<div>
-									<h4 class="font-sans font-bold text-sikuani-primary">{t.name}</h4>
-									<p class="text-sm opacity-60 uppercase tracking-tighter">{t.role}</p>
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 testimonial-grid">
+					{testimonials.map(t => (
+						<div class="testimonial-item h-full">
+							<div class="p-8 rounded-md bg-canvas border border-hairline hover:border-primary/20 transition-all duration-500 shadow-hover flex flex-col justify-between h-full">
+								<p class="text-base italic font-serif mb-8 text-ink leading-relaxed">
+									"{t.text}"
+								</p>
+								<div class="flex items-center gap-4 border-t border-hairline/60 pt-4">
+									<div class="h-10 w-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-serif font-bold text-sm select-none">
+										{t.name.charAt(0)}
+									</div>
+									<div>
+										<h4 class="font-sans font-bold text-sm text-ink">{t.name}</h4>
+										<p class="text-[10px] text-muted uppercase font-bold tracking-widest mt-0.5">{t.role}</p>
+									</div>
 								</div>
 							</div>
-						</div>
-					))}
-					{content.dark.testimonials.map((t, i) => (
-						<div class="p-12 rounded-sikuani-card bg-sikuani-surface border border-sikuani-primary/5 hover:border-sikuani-primary/20 transition-all duration-500 hidden dark:block">
-							<p class="text-xl italic font-serif mb-8 text-sikuani-on-surface/90 leading-relaxed">"{t.text}"</p>
-							<div class="flex items-center gap-4">
-								<div class="h-12 w-12 rounded-full bg-sikuani-primary/10"></div>
-								<div>
-									<h4 class="font-sans font-bold text-sikuani-primary lowercase">{t.name}</h4>
-									<p class="text-sm opacity-60 uppercase tracking-tighter">{t.role}</p>
-								</div>
-							</div>
-						</div>
-					))}
-				</div>
-			</div>
-		</section>
-
-		<!-- Dark Mode Exclusive: Experiences Grid -->
-		<section class="py-32 bg-sikuani-surface hidden dark:block border-t border-sikuani-primary/10">
-			<div class="container mx-auto px-4 text-center">
-				<SectionHeader title="Experiencias" centered={true} />
-				<div class="grid grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
-					{content.dark.experiences.map(exp => (
-						<div class="p-8 border border-sikuani-primary/20 rounded-sikuani-card hover:bg-sikuani-primary/10 transition-all duration-300">
-							<div class="text-4xl mb-4">{exp.icon}</div>
-							<h3 class="font-sans font-bold uppercase tracking-widest text-sm">{exp.title}</h3>
 						</div>
 					))}
 				</div>
 			</div>
 		</section>
 	</main>
-
 </Layout>
 
-<style>
-	@keyframes spin-slow {
-		from { transform: rotate(0deg); }
-		to { transform: rotate(360deg); }
+<script>
+	import { gsap } from 'gsap';
+	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+	
+	gsap.registerPlugin(ScrollTrigger);
+
+	// 1. Animaciones del Hero (Entrada de página)
+	gsap.from(".hero-tag", { opacity: 0, y: -20, duration: 0.8, ease: "power2.out" });
+	gsap.from(".hero-title", { opacity: 0, y: 30, duration: 1.2, delay: 0.2, ease: "power3.out" });
+	gsap.from(".hero-desc", { opacity: 0, y: 20, duration: 1, delay: 0.4, ease: "power2.out" });
+	gsap.from(".hero-actions", { opacity: 0, y: 15, duration: 0.8, delay: 0.6, ease: "power2.out" });
+	gsap.from(".hero-search-pill", { opacity: 0, scale: 0.96, y: 25, duration: 1.2, delay: 0.8, ease: "power4.out" });
+
+	// 2. Animaciones de scroll (ScrollTrigger)
+	
+	// Catálogo de Cabañas (Stagger)
+	gsap.from(".cabin-card-item", {
+		scrollTrigger: {
+			trigger: ".cabin-grid",
+			start: "top 85%",
+		},
+		opacity: 0,
+		y: 40,
+		duration: 0.8,
+		stagger: 0.15,
+		ease: "power2.out"
+	});
+
+	// Arquitectura Consciente (Desplazamiento horizontal e imagen)
+	gsap.from(".arch-img", {
+		scrollTrigger: {
+			trigger: ".arch-section",
+			start: "top 80%",
+		},
+		opacity: 0,
+		x: -40,
+		duration: 1,
+		ease: "power2.out"
+	});
+
+	gsap.from(".arch-content", {
+		scrollTrigger: {
+			trigger: ".arch-section",
+			start: "top 80%",
+		},
+		opacity: 0,
+		x: 40,
+		duration: 1,
+		ease: "power2.out"
+	});
+
+	// Contador de Porcentaje interactivo (0% -> 100%)
+	const countObj = { val: 0 };
+	const counterEl = document.querySelector(".counter-100");
+	if (counterEl) {
+		gsap.to(countObj, {
+			scrollTrigger: {
+				trigger: ".arch-section",
+				start: "top 80%",
+			},
+			val: 100,
+			duration: 2,
+			ease: "power1.out",
+			onUpdate: () => {
+				counterEl.textContent = Math.floor(countObj.val) + "%";
+			}
+		});
 	}
-	.animate-spin-slow {
-		animation: spin-slow 12s linear infinite;
-	}
-	.animate-fade-in {
-		animation: fadeIn 1s ease-out;
-	}
-	@keyframes fadeIn {
-		from { opacity: 0; transform: translateY(10px); }
-		to { opacity: 1; transform: translateY(0); }
-	}
-</style>
+
+	// Servicios (Stagger sobre los hijos de AmenityRow)
+	gsap.from(".services-row-anim > div > div", {
+		scrollTrigger: {
+			trigger: ".services-section",
+			start: "top 85%",
+		},
+		opacity: 0,
+		y: 25,
+		duration: 0.6,
+		stagger: 0.1,
+		ease: "power2.out"
+	});
+
+	// Testimonios (Stagger)
+	gsap.from(".testimonial-item", {
+		scrollTrigger: {
+			trigger: ".testimonial-grid",
+			start: "top 90%",
+		},
+		opacity: 0,
+		y: 35,
+		duration: 0.8,
+		stagger: 0.15,
+		ease: "power2.out"
+	});
+</script>

@@ -1,23 +1,24 @@
 ---
 interface Props {
 	href?: string;
-	variant?: 'primary' | 'secondary' | 'ghost';
+	variant?: 'primary' | 'conversion' | 'secondary';
 	class?: string;
+	[key: string]: any;
 }
 
-const { href, variant = 'primary', class: className } = Astro.props;
+const { href, variant = 'primary', class: className, ...rest } = Astro.props;
 
-const baseStyles = "px-6 py-3 rounded-sikuani-org transition-all duration-300 font-sans font-semibold text-center inline-block cursor-pointer";
+const baseStyles = "h-12 px-6 rounded-sm transition-all duration-300 font-sans flex items-center justify-center text-center inline-flex cursor-pointer border border-transparent select-none";
 
 const variants = {
-	primary: "bg-sikuani-accent text-black hover:opacity-90 shadow-md hover:shadow-sikuani-accent/20",
-	secondary: "border-2 border-sikuani-accent text-sikuani-accent hover:bg-sikuani-accent hover:text-black",
-	ghost: "text-sikuani-accent hover:bg-sikuani-accent/10"
+	primary: "bg-primary text-white hover:bg-primary-light font-bold dark:bg-primary dark:text-canvas dark:hover:bg-primary-light",
+	conversion: "bg-accent text-ink hover:opacity-90 font-semibold dark:bg-accent dark:text-canvas dark:hover:opacity-90",
+	secondary: "bg-transparent border-primary text-primary hover:bg-primary/5 font-semibold dark:border-primary dark:text-primary dark:hover:bg-primary/5"
 };
 
 const Tag = href ? 'a' : 'button';
 ---
 
-<Tag {href} class:list={[baseStyles, variants[variant], className]}>
+<Tag {href} class:list={[baseStyles, variants[variant], className]} {...rest}>
 	<slot />
 </Tag>

@@ -5,100 +5,95 @@ import SectionHeader from '../components/SectionHeader.astro';
 
 const base = import.meta.env.BASE_URL;
 
-const content = {
-	light: {
-		hero: {
-			title: "RESERVAS.",
-			description: "Inicie su viaje hacia el descanso consciente."
-		},
-		sidebar: {
-			title: "RESUMEN",
-			room: "ECO-SUITE RAINFOREST",
-			price: "$1,800.00",
-			details: "6 Noches / 2 Adultos",
-			taxes: "$342.00",
-			sustainability: "$45.00",
-			total: "$2,187.00",
-			btn: "CONFIRMAR RESERVA",
-			policy: "Cancelación gratuita hasta 48 horas antes del Check-In."
-		}
-	},
-	dark: {
-		hero: {
-			title: "RESERVAS.",
-			description: "Asegure su lugar en el santuario donde el tiempo se desvanece entre las sombras del bosque."
-		},
-		sidebar: {
-			title: "Tu Estadía",
-			room: "ECO-SUITE RAINFOREST",
-			price: "$1,800.00",
-			details: "6 Noches x $300",
-			taxes: "$342.00",
-			sustainability: "$45.00",
-			total: "$2,187.00",
-			btn: "Confirmar Reserva",
-			policy: "Cancelación gratuita hasta 48 horas antes del Check-In."
-		},
-		rituals: [
-			{ title: "Ritual del Bosque", img: "https://media.lindavita.com/media/wysiwyg/16404.jpg" },
-			{ title: "Amanecer Silente", img: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=400" },
-			{ title: "Gastronomía de Raíz", img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiG4lrbYlLvIR0bB8D1Zs55ZCEFoed2Ykjpfk9AECy29GF516_hTdRTMSQHvdWlAqWMTNCms1M-JnxrurVx0blbsR6n5RhxeXE8KavgaKzauXgdzrf0B6lO9kiwGZDG-rBPAofcDeEM2HM/s640/pachamanca2.jpg" }
-		]
-	}
+const selectedRoom = {
+	title: "ECO-SUITE RAINFOREST",
+	details: "6 Noches / 2 Adultos",
+	pricePerNight: "$300.00",
+	subtotal: "$1,800.00",
+	sustainabilityTax: "$45.00",
+	taxes: "$342.00",
+	total: "$2,187.00",
+	image: "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&q=80&w=600"
 };
+
+const complementaryExperiences = [
+	{ title: "Ritual del Bosque (Yoga)", img: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=400", price: "$40" },
+	{ title: "Amanecer Silente (Trekking)", img: "https://images.unsplash.com/photo-1487525219605-eadb39ae229c?auto=format&fit=crop&q=80&w=400", price: "$25" },
+	{ title: "Gastronomía Ancestral (Cena)", img: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&q=80&w=400", price: "$60" }
+];
 ---
 
-<Layout title="Reservas - Sikuani">
+<Layout title="Reservas - Sikuani Ecohotel">
+	<main class="bg-canvas text-body min-h-screen overflow-x-hidden">
+		<section class="py-24 max-w-[1200px] mx-auto px-6">
+			<div class="max-w-4xl mb-16 select-none booking-header">
+				<h1 class="text-6xl md:text-8xl font-serif text-primary tracking-tighter">Reservas.</h1>
+				<p class="text-lg md:text-xl text-muted font-sans mt-4 max-w-xl">
+					Inicia tu viaje hacia el descanso consciente. Configura las fechas de tu estadía y complementa tu inmersión.
+				</p>
+			</div>
 
-	<main class="transition-colors duration-700 bg-sikuani-bg min-h-screen">
-		<section class="py-24">
-			<div class="container mx-auto px-4">
-				<div class="max-w-4xl mb-16">
-					<h1 class="text-7xl md:text-9xl font-serif text-sikuani-primary mb-6 tracking-tighter">RESERVAS.</h1>
-					<p class="text-xl md:text-2xl text-sikuani-on-surface/80 font-sans max-w-xl">
-						<span class="block dark:hidden">{content.light.hero.description}</span>
-						<span class="hidden dark:block">{content.dark.hero.description}</span>
-					</p>
-				</div>
+			<!-- Layout estructural: 65% izquierda (Calendario/Opciones), 35% derecha (Sidebar Sticky) -->
+			<div class="flex flex-col lg:flex-row gap-12 items-start relative">
+				
+				<!-- Columna Izquierda: Formulario e Interfaz de Fechas (65%) -->
+				<div class="w-full lg:w-[65%] space-y-12 booking-form-container">
+					<div class="bg-canvas dark:bg-dark-surface border border-hairline dark:border-dark-hairline rounded-md p-8 shadow-hover space-y-8 select-none">
+						<h3 class="text-xl font-serif font-bold text-ink border-b border-hairline dark:border-dark-hairline pb-4">
+							1. Selección de Estadía
+						</h3>
 
-				<div class="flex flex-col lg:flex-row gap-12 items-start">
-					<!-- Main Booking Interface -->
-					<div class="w-full lg:w-2/3 bg-sikuani-surface rounded-sikuani-card p-8 md:p-12 border border-sikuani-primary/5 shadow-sm">
-						<!-- Custom Form / Calendar Mockup -->
-						<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+						<!-- Inputs de Llegada y Salida -->
+						<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
 							<div class="space-y-2">
-								<label class="text-sm font-bold uppercase tracking-widest text-sikuani-primary">Llegada</label>
-								<div class="w-full p-4 border-b-2 border-sikuani-primary/20 bg-sikuani-bg/30 font-sans">14 Oct. 2024</div>
+								<label class="text-[10px] font-bold uppercase tracking-widest text-primary">Llegada</label>
+								<div class="w-full p-4 border border-hairline dark:border-dark-hairline bg-surface-soft dark:bg-dark-surface-soft text-ink dark:text-dark-ink font-sans rounded-sm text-sm font-semibold">
+									14 Oct. 2024 (Check-In)
+								</div>
 							</div>
 							<div class="space-y-2">
-								<label class="text-sm font-bold uppercase tracking-widest text-sikuani-primary">Salida</label>
-								<div class="w-full p-4 border-b-2 border-sikuani-primary/20 bg-sikuani-bg/30 font-sans">18 Oct. 2024</div>
+								<label class="text-[10px] font-bold uppercase tracking-widest text-primary">Salida</label>
+								<div class="w-full p-4 border border-hairline dark:border-dark-hairline bg-surface-soft dark:bg-dark-surface-soft text-ink dark:text-dark-ink font-sans rounded-sm text-sm font-semibold">
+									20 Oct. 2024 (Check-Out)
+								</div>
 							</div>
 						</div>
 
-						<!-- Calendar Mock -->
-						<div class="mb-12">
-							<div class="flex justify-between items-center mb-8">
-								<h3 class="text-2xl font-serif text-sikuani-primary">Octubre 2024</h3>
-								<div class="flex gap-4">
-									<button class="p-2 border border-sikuani-primary/10 rounded-full">&larr;</button>
-									<button class="p-2 border border-sikuani-primary/10 rounded-full">&rarr;</button>
+						<!-- Calendario Mockup Interactivo -->
+						<div class="pt-4">
+							<div class="flex justify-between items-center mb-6">
+								<h4 class="text-base font-serif font-bold text-ink">Octubre 2024</h4>
+								<div class="flex gap-2">
+									<button class="h-8 w-8 border border-hairline dark:border-dark-hairline rounded-full flex items-center justify-center text-ink hover:bg-surface-soft dark:hover:bg-dark-surface-soft transition-colors">&larr;</button>
+									<button class="h-8 w-8 border border-hairline dark:border-dark-hairline rounded-full flex items-center justify-center text-ink hover:bg-surface-soft dark:hover:bg-dark-surface-soft transition-colors">&rarr;</button>
 								</div>
 							</div>
-							<div class="grid grid-cols-7 gap-2 text-center text-sm font-sans">
-								{['D', 'L', 'M', 'M', 'J', 'V', 'S'].map(d => <div class="font-bold opacity-40 py-2">{d}</div>)}
-								<div class="py-4"></div>
-								<div class="py-4"></div>
+							
+							<div class="grid grid-cols-7 gap-1.5 text-center text-xs font-sans">
+								<!-- Días de la semana -->
+								{['D', 'L', 'M', 'M', 'J', 'V', 'S'].map(d => (
+									<div class="font-bold text-muted py-2 select-none">{d}</div>
+								))}
+								
+								<!-- Espacios vacíos para iniciar el mes -->
+								<div class="py-3"></div>
+								<div class="py-3"></div>
+								
+								<!-- Días del mes con rango seleccionado (14 al 20) -->
 								{Array.from({ length: 31 }).map((_, i) => {
 									const day = i + 1;
-									const isSelected = (day >= 14 && 18 >= day);
+									const isSelected = day >= 14 && 20 >= day;
+									const isEdge = (day === 14 || day === 20);
+									
 									return (
 										<div 
 											class:list={[
-												"py-4 rounded-sikuani-org transition-colors cursor-pointer",
+												"py-3.5 rounded-sm transition-all duration-300 cursor-pointer font-semibold",
 												isSelected 
-													? "bg-sikuani-accent text-black font-bold shadow-lg" 
-													: "hover:bg-sikuani-primary/5"
+													? isEdge 
+														? "bg-primary text-white scale-105 font-bold shadow-md"
+														: "bg-accent/25 dark:bg-dark-accent/20 text-primary dark:text-dark-primary"
+													: "text-ink hover:bg-surface-soft dark:hover:bg-dark-surface-soft"
 											]}
 										>
 											{day}
@@ -109,91 +104,131 @@ const content = {
 						</div>
 					</div>
 
-					<!-- Sidebar Summary -->
-					<aside class="w-full lg:w-1/3 space-y-8 sticky top-32">
-						<div class="bg-sikuani-surface rounded-sikuani-card p-8 border-2 border-sikuani-primary/10 shadow-xl">
-							<h2 class="text-2xl font-serif text-sikuani-primary mb-8 border-b border-sikuani-primary/10 pb-4">
-								<span class="block dark:hidden">{content.light.sidebar.title}</span>
-								<span class="hidden dark:block">{content.dark.sidebar.title}</span>
-							</h2>
-
-							<!-- Suite Image (Dark Mode Style) -->
-							<div class="hidden dark:block mb-8 rounded-sikuani-org overflow-hidden aspect-video">
-								<img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&q=80&w=600" alt="Premium Suite" class="w-full h-full object-cover" />
-							</div>
-
-							<div class="space-y-6 font-sans">
-								<div class="flex justify-between items-end">
-									<div>
-										<h4 class="font-bold text-lg">{content.light.sidebar.room}</h4>
-										<p class="text-sm opacity-60">
-											<span class="block dark:hidden">{content.light.sidebar.details}</span>
-											<span class="hidden dark:block">{content.dark.sidebar.details}</span>
-										</p>
+					<!-- Sección de Complementos / Inmersión -->
+					<div class="bg-canvas dark:bg-dark-surface border border-hairline dark:border-dark-hairline rounded-md p-8 shadow-hover space-y-8 select-none addon-section">
+						<h3 class="text-xl font-serif font-bold text-ink border-b border-hairline dark:border-dark-hairline pb-4">
+							2. Complementa tu Inmersión
+						</h3>
+						
+						<div class="grid grid-cols-1 sm:grid-cols-3 gap-6 addon-grid">
+							{complementaryExperiences.map(exp => (
+								<div class="addon-item border border-hairline dark:border-dark-hairline rounded-md overflow-hidden bg-canvas dark:bg-dark-surface-soft hover:border-primary/30 transition-all duration-300 cursor-pointer shadow-hover">
+									<div class="aspect-video overflow-hidden">
+										<img src={exp.img} alt={exp.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
 									</div>
-									<span class="text-xl font-serif">{content.light.sidebar.price}</span>
-								</div>
-
-								<div class="pt-6 border-t border-sikuani-primary/5 space-y-4 text-sm opacity-80">
-									<div class="flex justify-between">
-										<span>Tasa de Sostenibilidad</span>
-										<span>
-											<span class="block dark:hidden">{content.light.sidebar.sustainability}</span>
-											<span class="hidden dark:block">{content.dark.sidebar.sustainability}</span>
-										</span>
-									</div>
-									<div class="flex justify-between">
-										<span>Cargos e Impuestos</span>
-										<span>
-											<span class="block dark:hidden">{content.light.sidebar.taxes}</span>
-											<span class="hidden dark:block">{content.dark.sidebar.taxes}</span>
-										</span>
+									<div class="p-4 space-y-3">
+										<h4 class="font-sans font-bold text-ink text-xs line-clamp-1 group-hover:text-primary transition-colors">{exp.title}</h4>
+										<div class="flex justify-between items-center pt-2 border-t border-hairline/60 dark:border-dark-hairline/60">
+											<span class="text-xs text-primary font-bold">{exp.price}</span>
+											<span class="text-[9px] uppercase font-bold text-muted tracking-wider">Agregar +</span>
+										</div>
 									</div>
 								</div>
-
-								<div class="pt-6 border-t border-sikuani-primary/20 flex justify-between items-center text-2xl font-serif text-sikuani-primary">
-									<span>Total</span>
-									<span>
-										<span class="block dark:hidden">{content.light.sidebar.total}</span>
-										<span class="hidden dark:block">{content.dark.sidebar.total}</span>
-									</span>
-								</div>
-
-								<Button variant="primary" class="w-full py-5 text-lg mt-8 uppercase tracking-widest">
-									<span class="block dark:hidden">{content.light.sidebar.btn}</span>
-									<span class="hidden dark:block">{content.dark.sidebar.btn}</span>
-								</Button>
-
-								<p class="text-xs text-center opacity-50 mt-6 italic">
-									<span class="block dark:hidden">{content.light.sidebar.policy}</span>
-									<span class="hidden dark:block">{content.dark.sidebar.policy}</span>
-								</p>
-							</div>
+							))}
 						</div>
-					</aside>
+					</div>
 				</div>
+
+				<!-- Columna Derecha: Sidebar Sticky de Resumen (35%) -->
+				<!-- En móvil (< 744px) se adapta al panel inferior flotante mediante clases CSS adaptativas -->
+				<aside class="w-full lg:w-[35%] lg:sticky lg:top-28 z-40 booking-sidebar">
+					<div class="bg-canvas dark:bg-dark-surface rounded-md p-6 md:p-8 border border-hairline dark:border-dark-hairline shadow-hover space-y-6">
+						<h3 class="text-lg font-serif font-bold text-ink border-b border-hairline dark:border-dark-hairline pb-3 select-none">
+							Resumen de Reserva
+						</h3>
+
+						<!-- Foto de Cabaña Seleccionada -->
+						<div class="aspect-video rounded-md overflow-hidden bg-surface-soft select-none border border-hairline/60 dark:border-dark-hairline/60">
+							<img src={selectedRoom.image} alt={selectedRoom.title} class="w-full h-full object-cover" />
+						</div>
+
+						<div class="space-y-4 font-sans select-none">
+							<!-- Nombre e Info de cabaña -->
+							<div class="flex justify-between items-start">
+								<div>
+									<h4 class="font-bold text-sm text-ink">{selectedRoom.title}</h4>
+									<p class="text-[11px] text-muted font-medium mt-1">{selectedRoom.details}</p>
+								</div>
+								<span class="text-base font-serif font-bold text-primary">{selectedRoom.pricePerNight}</span>
+							</div>
+
+							<!-- Tasas e Impuestos -->
+							<div class="pt-4 border-t border-hairline/60 dark:border-dark-hairline/60 space-y-3 text-xs text-muted font-medium">
+								<div class="flex justify-between">
+									<span>Tasa de Sostenibilidad Regenerativa</span>
+									<span class="text-ink">{selectedRoom.sustainabilityTax}</span>
+								</div>
+								<div class="flex justify-between">
+									<span>Impuestos de Preservación e IVA</span>
+									<span class="text-ink">{selectedRoom.taxes}</span>
+								</div>
+							</div>
+
+							<!-- Total General -->
+							<div class="pt-4 border-t border-hairline dark:border-dark-hairline flex justify-between items-center text-xl font-serif font-bold text-primary">
+								<span>Total</span>
+								<span>{selectedRoom.total}</span>
+							</div>
+
+							<!-- Botón de Conversión de reserva instantánea en Amarillo Vibrante -->
+							<Button variant="conversion" class="w-full py-6 text-xs mt-4 uppercase tracking-widest font-bold shadow-lg">
+								Confirmar Reserva
+							</Button>
+
+							<p class="text-[10px] text-center text-muted font-medium mt-4 italic leading-relaxed">
+								Cancelación gratuita hasta 48 horas antes del Check-In.
+							</p>
+						</div>
+					</div>
+				</aside>
+
 			</div>
 		</section>
 
-		<!-- Dark Mode Exclusive: Rituals/Experiences -->
-		<section class="py-32 bg-sikuani-surface hidden dark:block border-t border-sikuani-primary/10">
-			<div class="container mx-auto px-4">
-				<SectionHeader title="Experiencia Inmersiva" subtitle="Complementos" centered={true} />
-				<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
-					{content.dark.rituals.map(ritual => (
-						<div class="group cursor-pointer">
-							<div class="aspect-4/5 rounded-sikuani-card overflow-hidden mb-6 relative">
-								<img src={ritual.img} alt={ritual.title} class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-								<div class="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
-									<span class="text-white font-serif text-2xl">{ritual.title}</span>
-								</div>
-							</div>
-							<h3 class="font-sans font-bold uppercase tracking-widest text-sm text-center group-hover:text-sikuani-primary transition-colors">{ritual.title}</h3>
-						</div>
-					))}
-				</div>
+		<!-- Adaptación de barra inferior flotante responsiva en móvil (< 744px) -->
+		<!-- Esto cumple con la directiva: "Sticky right-rail booking modules shift into a persistent bottom execution panel" -->
+		<div class="lg:hidden fixed bottom-0 left-0 w-full bg-canvas border-t border-hairline p-4 z-50 flex items-center justify-between shadow-2xl transition-colors duration-500 select-none mobile-booking-bar">
+			<div>
+				<span class="block text-[9px] uppercase font-bold text-muted tracking-wider">Total Estancia</span>
+				<span class="text-lg font-serif font-bold text-primary">{selectedRoom.total}</span>
 			</div>
-		</section>
+			<Button variant="conversion" class="h-10 px-6 text-xs uppercase tracking-widest font-bold">
+				Reservar
+			</Button>
+		</div>
 	</main>
-
 </Layout>
+
+<script>
+	import { gsap } from 'gsap';
+	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+	
+	gsap.registerPlugin(ScrollTrigger);
+
+	// Animaciones de carga
+	gsap.from(".booking-header", { opacity: 0, y: -20, duration: 0.8, ease: "power2.out" });
+	gsap.from(".booking-form-container", { opacity: 0, x: -40, duration: 1, delay: 0.2, ease: "power2.out" });
+	gsap.from(".booking-sidebar", { opacity: 0, x: 40, duration: 1, delay: 0.2, ease: "power2.out" });
+
+	// Animaciones de los complementos al hacer scroll (Stagger)
+	gsap.from(".addon-item", {
+		scrollTrigger: {
+			trigger: ".addon-section",
+			start: "top 85%",
+		},
+		opacity: 0,
+		y: 25,
+		duration: 0.7,
+		stagger: 0.15,
+		ease: "power2.out"
+	});
+
+	// Animación de entrada de la barra flotante móvil si aparece en pantalla
+	gsap.from(".mobile-booking-bar", {
+		y: 60,
+		opacity: 0,
+		duration: 0.8,
+		delay: 1,
+		ease: "power3.out"
+	});
+</script>

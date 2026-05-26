@@ -1,0 +1,63 @@
+---
+interface Props {
+  amenities?: string[];
+  compact?: boolean;
+}
+
+const { 
+  amenities = ['recepcion', 'habitaciones', 'duchas', 'parrilla', 'zonas_verdes', 'spa'], 
+  compact = false 
+} = Astro.props;
+
+// Catálogo de iconos vectoriales en verde primary
+const iconMap = {
+  recepcion: {
+    label: 'Recepción',
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" /></svg>`
+  },
+  habitaciones: {
+    label: 'Cama King',
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>`
+  },
+  duchas: {
+    label: 'Duchas',
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" /></svg>`
+  },
+  parrilla: {
+    label: 'Zona Parrilla',
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" /><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9" /></svg>`
+  },
+  zonas_verdes: {
+    label: 'Zonas Verdes',
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>`
+  },
+  spa: {
+    label: 'Spa & Wellness',
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>`
+  }
+};
+---
+
+<div class:list={[
+  "grid gap-4", 
+  compact 
+    ? "flex flex-wrap gap-2 text-xs" 
+    : "grid-cols-2 sm:grid-cols-3 md:grid-cols-6 text-sm"
+]}>
+  {amenities.map(key => {
+    const item = iconMap[key];
+    if (!item) return null;
+    
+    return compact ? (
+      <div class="flex items-center gap-1.5 bg-surface-soft border border-hairline px-2.5 py-1 rounded-full text-muted transition-colors select-none">
+        <span class="text-primary" set:html={item.svg} />
+        <span class="font-sans font-medium text-[11px]">{item.label}</span>
+      </div>
+    ) : (
+      <div class="flex flex-col items-center justify-center p-4 rounded-md bg-canvas border border-hairline text-center transition-all duration-300 hover:border-primary/30 group shadow-hover select-none">
+        <div class="h-10 w-10 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300" set:html={item.svg} />
+        <h4 class="font-sans font-bold text-ink text-xs uppercase tracking-wider">{item.label}</h4>
+      </div>
+    );
+  })}
+</div>

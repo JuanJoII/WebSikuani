@@ -13,22 +13,24 @@ const navLinks = [
 ];
 ---
 
-<nav class="fixed top-0 left-0 w-full z-50 bg-sikuani-bg/80 backdrop-blur-md border-b border-sikuani-primary/10 transition-all duration-700">
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<nav class="fixed top-0 left-0 w-full z-50 bg-canvas/80 backdrop-blur-md border-b border-hairline transition-all duration-500">
+	<div class="max-w-[1200px] mx-auto px-6">
 		<div class="flex justify-between items-center h-20">
+			<!-- Logo a la izquierda -->
 			<div class="shrink-0">
-				<a href={base} class="flex items-center gap-3 text-3xl font-serif text-sikuani-primary tracking-tight transition-all duration-700">
-					<img src={`${base}LogoColor_3.png`} alt="Sikuani Logo" class="h-10 w-auto" />
-					<span>Sikuani</span>
+				<a href={base} class="flex items-center gap-3 text-2xl font-serif text-primary tracking-tight transition-all duration-300">
+					<img src={`${base}LogoColor_3.png`} alt="Sikuani Logo" class="h-9 w-auto" />
+					<span class="font-bold">Sikuani</span>
 				</a>
 			</div>
 			
+			<!-- Enlaces informativos centrados -->
 			<div class="hidden md:block">
-				<div class="ml-10 flex items-baseline space-x-8">
+				<div class="flex items-center space-x-8">
 					{navLinks.map(link => (
 						<a 
 							href={link.href} 
-							class="text-sikuani-on-surface hover:text-sikuani-primary font-sans font-medium transition-colors inline-block"
+							class="text-ink hover:text-primary font-sans font-medium text-sm transition-colors duration-300"
 						>
 							{link.text}
 						</a>
@@ -36,13 +38,23 @@ const navLinks = [
 				</div>
 			</div>
 			
-			<div class="flex items-center gap-4">
+			<!-- Preferencias de idioma, conmutador y botón a la derecha -->
+			<div class="flex items-center gap-6">
+				<!-- Idioma -->
+				<span class="text-muted font-sans font-semibold text-xs tracking-wider cursor-pointer hover:text-primary transition-colors select-none">
+					ES / EN
+				</span>
+				<!-- Conmutador -->
 				<ThemeToggle />
-				<div class="hidden md:block">
-					<Button href={`${base}contacto/`} variant="primary">Contacto</Button>
+				<!-- Botón Contacto -->
+				<div class="hidden sm:block">
+					<Button href={`${base}contacto/`} variant="secondary" class="h-10 px-4 text-xs tracking-wider uppercase font-bold">
+						Contacto
+					</Button>
 				</div>
 			</div>
 		</div>
 	</div>
 </nav>
+<!-- Espaciador fijo para compensar la barra de navegación fija de 80px -->
 <div class="h-20"></div>
