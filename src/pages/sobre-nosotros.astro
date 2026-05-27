@@ -36,7 +36,7 @@ const team = [
 
 		<!-- Misión y Visión Section -->
 		<section class="py-24 border-b border-hairline bg-surface-soft/20 transition-colors duration-500 mission-section">
-			<div class="max-w-[1200px] mx-auto px-6">
+			<div class="max-w-300 mx-auto px-6">
 				<div class="flex flex-col lg:flex-row items-center gap-16">
 					<!-- Misión -->
 					<div class="w-full lg:w-1/2 space-y-8 mission-content">
@@ -64,7 +64,7 @@ const team = [
 		</section>
 
 		<!-- Valores Grid -->
-		<section class="py-24 max-w-[1200px] mx-auto px-6 border-b border-hairline">
+		<section class="py-24 max-w-300 mx-auto px-6 border-b border-hairline">
 			<SectionHeader title="Nuestros Valores Fundacionales" subtitle="Pilares Orgánicos" centered={true} />
 			
 			<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 values-grid">
@@ -87,7 +87,7 @@ const team = [
 
 		<!-- Equipo Sikuani -->
 		<section class="py-24 bg-canvas transition-colors duration-500">
-			<div class="max-w-[1200px] mx-auto px-6 text-center">
+			<div class="max-w-300 mx-auto px-6 text-center">
 				<SectionHeader title="Guardianes del Refugio" subtitle="Talento Humano" centered={true} />
 				
 				<p class="text-base text-body max-w-3xl mx-auto mb-16 font-sans leading-relaxed">
@@ -98,7 +98,7 @@ const team = [
 					{team.map(member => (
 						<div class="team-item flex flex-col items-center group select-none">
 							<!-- Retrato redondo -->
-							<div class="aspect-square w-36 h-36 rounded-full overflow-hidden border-2 border-primary/20 bg-surface-soft group-hover:border-primary transition-colors duration-300 group-hover:scale-105 transition-transform duration-500 shadow-hover">
+							<div class="aspect-square w-36 h-36 rounded-full overflow-hidden border-2 border-primary/20 bg-surface-soft group-hover:border-primary transition-colors duration-300 group-hover:scale-105 shadow-hover">
 								<img 
 									src={member.img} 
 									alt={member.name} 
