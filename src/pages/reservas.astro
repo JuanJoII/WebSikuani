@@ -148,9 +148,8 @@ const complementaryExperiences = [
 					</div>
 				</div>
 
-				<!-- Columna Derecha: Sidebar Sticky de Resumen (35%) -->
-				<!-- En móvil (< 744px) se adapta al panel inferior flotante mediante clases CSS adaptativas -->
-				<aside class="w-full lg:w-[35%] lg:sticky lg:top-28 z-40 booking-sidebar">
+				<!-- Columna Derecha: Sidebar Sticky de Resumen (35%) (Oculto en móvil/tablet para evitar duplicación y ruido visual) -->
+				<aside class="hidden lg:block w-full lg:w-[35%] lg:sticky lg:top-28 z-40 booking-sidebar">
 					<div class="bg-canvas dark:bg-dark-surface rounded-md p-6 md:p-8 border border-hairline dark:border-dark-hairline shadow-hover space-y-6">
 						<h3 class="text-lg font-serif font-bold text-ink border-b border-hairline dark:border-dark-hairline pb-3 select-none">
 							Resumen de Reserva
@@ -446,7 +445,7 @@ const complementaryExperiences = [
 		// Celdas vacías al inicio (Evitar carac. menor que en el loop)
 		for (let i = 0; firstDayIndex > i; i++) {
 			const emptyCell = document.createElement("div");
-			emptyCell.className = "py-3 select-none";
+			emptyCell.className = "py-2.5 sm:py-3 select-none";
 			gridEl.appendChild(emptyCell);
 		}
 
@@ -465,7 +464,7 @@ const complementaryExperiences = [
 			const isHighFlow = highFlowDays.includes(day);
 
 			// Clases de Tailwind premium para cada celda
-			let cellClasses = "py-3 rounded-sm transition-all duration-300 font-semibold select-none text-xs relative flex flex-col items-center justify-center ";
+			let cellClasses = "py-2.5 sm:py-3 rounded-sm transition-all duration-300 font-semibold select-none text-xs relative flex flex-col items-center justify-center ";
 
 			if (isOccupied) {
 				cellClasses += "text-muted/30 dark:text-dark-muted/20 bg-surface-soft/40 dark:bg-dark-surface-soft/10 cursor-not-allowed line-through";
