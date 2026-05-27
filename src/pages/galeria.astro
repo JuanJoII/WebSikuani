@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import SectionHeader from '../components/SectionHeader.astro';
+import PageHero from '../components/PageHero.astro';
 import Button from '../components/Button.astro';
 
 const images = [
@@ -39,20 +39,15 @@ const images = [
 
 <Layout title="Galería - Sikuani Ecohotel">
 	<main class="bg-canvas text-body min-h-screen overflow-x-hidden">
+		<!-- Hero Section Estandarizado -->
+		<PageHero 
+			title="Nuestra Galería Visual"
+			description="Recorre visualmente la calma de nuestras instalaciones, el amanecer cubierto de niebla y los detalles arquitectónicos diseñados para restaurar tu paz interior."
+		/>
+		
+		<!-- Grilla de Fotos -->
 		<section class="py-24 max-w-[1200px] mx-auto px-6">
-			<div class="gallery-header text-center">
-				<SectionHeader 
-					title="Nuestra Galería Visual" 
-					subtitle="Inspiración Natural" 
-					centered={true} 
-				/>
-				
-				<p class="text-base text-body max-w-2xl mx-auto text-center mb-16 font-sans leading-relaxed gallery-desc">
-					Recorre visualmente la calma de nuestras instalaciones, el amanecer cubierto de niebla y los detalles arquitectónicos diseñados para restaurar tu paz interior.
-				</p>
-			</div>
-			
-			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16 gallery-grid">
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 gallery-grid">
 				{images.map(img => (
 					<div class="gallery-item flex flex-col justify-between h-full">
 						<div class="group bg-canvas dark:bg-dark-surface border border-hairline dark:border-dark-hairline rounded-md overflow-hidden transition-all duration-500 shadow-hover hover:border-primary/20 dark:hover:border-primary/20 hover:bg-canvas dark:hover:bg-dark-surface-soft flex flex-col justify-between select-none h-full">
@@ -95,9 +90,10 @@ const images = [
 	
 	gsap.registerPlugin(ScrollTrigger);
 
-	// Animación cabecera
-	gsap.from(".gallery-header", { opacity: 0, y: -20, duration: 0.8, ease: "power2.out" });
-	gsap.from(".gallery-desc", { opacity: 0, y: 15, duration: 0.8, delay: 0.2, ease: "power2.out" });
+	// Animaciones Hero Estandarizadas
+	gsap.from(".hero-tag", { opacity: 0, y: -20, duration: 0.8, ease: "power2.out" });
+	gsap.from(".hero-title", { opacity: 0, y: 30, duration: 1.2, delay: 0.2, ease: "power3.out" });
+	gsap.from(".hero-desc", { opacity: 0, y: 20, duration: 1, delay: 0.4, ease: "power2.out" });
 
 	// Animación de la grilla de fotos al hacer scroll (Stagger)
 	gsap.from(".gallery-item", {

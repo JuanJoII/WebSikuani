@@ -10,6 +10,7 @@ const base = import.meta.env.BASE_URL;
 
 const cabins = [
 	{
+		id: "rainforest",
 		title: "Eco-Suite Rainforest",
 		image: "https://images.unsplash.com/photo-1587061949409-02df41d5e562?auto=format&fit=crop&q=80&w=800",
 		price: "$300.00",
@@ -17,6 +18,7 @@ const cabins = [
 		amenities: ['habitaciones', 'duchas', 'spa', 'recepcion']
 	},
 	{
+		id: "nido-viento",
 		title: "Nido del Viento Glamping",
 		image: "https://images.unsplash.com/photo-1533759413974-9e15f3b745ac?auto=format&fit=crop&q=80&w=800",
 		price: "$250.00",
@@ -24,6 +26,7 @@ const cabins = [
 		amenities: ['habitaciones', 'parrilla', 'zonas_verdes', 'recepcion']
 	},
 	{
+		id: "domo-ancestral",
 		title: "Domo Ancestral",
 		image: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&q=80&w=800",
 		price: "$280.00",
@@ -101,7 +104,7 @@ const testimonials = [
 							price={cabin.price}
 							rating={cabin.rating}
 							amenities={cabin.amenities}
-							href={`${base}reservas/`}
+							href={`${base}reservas/?room=${cabin.id}`}
 						/>
 					</div>
 				))}

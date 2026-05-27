@@ -1,24 +1,26 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import SectionHeader from '../components/SectionHeader.astro';
+import PageHero from '../components/PageHero.astro';
 import Button from '../components/Button.astro';
 ---
 
 <Layout title="Contacto - Sikuani Ecohotel">
 	<main class="bg-canvas text-body min-h-screen overflow-x-hidden">
+		<!-- Hero Section Estandarizado -->
+		<PageHero 
+			title="Ponte en contacto con nuestro refugio."
+			description="Si deseas planificar retiros de bienestar, coordinar traslados o tienes preguntas sobre tu estadía, estamos listos para guiar tu camino."
+		/>
+		
+		<!-- Cuerpo de Contacto -->
 		<section class="py-24 max-w-[1200px] mx-auto px-6">
 			<div class="flex flex-col lg:flex-row gap-16 items-start contact-container">
 				
 				<!-- Columna Izquierda: Información de Contacto -->
-				<div class="w-full lg:w-1/2 space-y-12 contact-info">
-					<SectionHeader 
-						title="Contáctanos" 
-						subtitle="Experiencias conscientes en el bosque alto" 
-					/>
-					
-					<p class="text-lg text-body font-sans leading-relaxed">
-						Permite que el murmullo del bosque guíe tu viaje. Si deseas coordinar tu reserva, planear un retiro grupal o tienes inquietudes sobre cómo llegar a nuestro refugio en Cajicá, estamos a tu total disposición.
-					</p>
+				<div class="w-full lg:w-1/2 space-y-8 contact-info">
+					<h3 class="text-2xl font-serif font-normal text-ink mb-6 border-b border-hairline pb-4 select-none">
+						Nuestros Canales
+					</h3>
 					
 					<div class="space-y-8">
 						<!-- Ubicación -->
@@ -30,7 +32,7 @@ import Button from '../components/Button.astro';
 								</svg>
 							</div>
 							<div>
-								<h4 class="text-base font-serif font-bold text-ink">Coordenadas del Refugio</h4>
+								<h4 class="text-base font-serif font-bold text-ink">Dirección del Refugio</h4>
 								<p class="text-sm text-muted font-sans mt-1">Cajicá, Cundinamarca, Colombia</p>
 							</div>
 						</div>
@@ -68,6 +70,10 @@ import Button from '../components/Button.astro';
 				<!-- Columna Derecha: Formulario de Contacto -->
 				<div class="w-full lg:w-1/2 contact-form">
 					<form class="bg-canvas dark:bg-dark-surface p-8 md:p-10 rounded-md border border-hairline dark:border-dark-hairline shadow-hover space-y-6 select-none">
+						<h3 class="text-2xl font-serif font-normal text-ink mb-6 border-b border-hairline pb-4 select-none">
+							Envíanos un Mensaje
+						</h3>
+						
 						<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
 							<div class="space-y-2">
 								<label class="text-[10px] font-bold uppercase tracking-widest text-primary">Nombre</label>
@@ -123,9 +129,14 @@ import Button from '../components/Button.astro';
 <script>
 	import { gsap } from 'gsap';
 	
+	// Animaciones Hero Estandarizadas
+	gsap.from(".hero-tag", { opacity: 0, y: -20, duration: 0.8, ease: "power2.out" });
+	gsap.from(".hero-title", { opacity: 0, y: 30, duration: 1.2, delay: 0.2, ease: "power3.out" });
+	gsap.from(".hero-desc", { opacity: 0, y: 20, duration: 1, delay: 0.4, ease: "power2.out" });
+
 	// Animaciones de entrada coordinadas
-	gsap.from(".contact-info", { opacity: 0, x: -40, duration: 1, ease: "power2.out" });
-	gsap.from(".contact-form", { opacity: 0, x: 40, duration: 1, ease: "power2.out" });
+	gsap.from(".contact-info", { opacity: 0, x: -40, duration: 1, delay: 0.4, ease: "power2.out" });
+	gsap.from(".contact-form", { opacity: 0, x: 40, duration: 1, delay: 0.4, ease: "power2.out" });
 	
 	// Animación con stagger sobre los ítems de contacto a la izquierda
 	gsap.from(".contact-item", {
@@ -133,7 +144,7 @@ import Button from '../components/Button.astro';
 		y: 20,
 		duration: 0.6,
 		stagger: 0.15,
-		delay: 0.4,
+		delay: 0.8,
 		ease: "power2.out"
 	});
 </script>

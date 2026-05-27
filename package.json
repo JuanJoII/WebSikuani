@@ -16,7 +16,11 @@
     "@fontsource/dm-serif-display": "^5.2.8",
     "@tailwindcss/vite": "^4.2.2",
     "astro": "^6.1.6",
+    "canvas-confetti": "^1.9.4",
     "gsap": "^3.15.0",
     "tailwindcss": "^4.2.2"
+  },
+  "devDependencies": {
+    "@types/canvas-confetti": "^1.9.0"
   }
 }

@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
 import Button from '../components/Button.astro';
-import SectionHeader from '../components/SectionHeader.astro';
 
 const base = import.meta.env.BASE_URL;
 
@@ -13,7 +13,7 @@ const selectedRoom = {
 	sustainabilityTax: "$45.00",
 	taxes: "$342.00",
 	total: "$2,187.00",
-	image: "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&q=80&w=600"
+	image: "https://images.unsplash.com/photo-1587061949409-02df41d5e562?auto=format&fit=crop&q=80&w=600"
 };
 
 const complementaryExperiences = [
@@ -25,14 +25,15 @@ const complementaryExperiences = [
 
 <Layout title="Reservas - Sikuani Ecohotel">
 	<main class="bg-canvas text-body min-h-screen overflow-x-hidden">
+		<!-- Hero Section Estandarizado -->
+		<PageHero 
+			title="Reserva tu Refugio Ancestral." 
+			tag="Estadía Consciente" 
+			description="Inicia tu viaje hacia el descanso consciente. Configura las fechas de tu estadía y complementa tu inmersión."
+		/>
+		
+		<!-- Formulario e Interfaz -->
 		<section class="py-24 max-w-[1200px] mx-auto px-6">
-			<div class="max-w-4xl mb-16 select-none booking-header">
-				<h1 class="text-6xl md:text-8xl font-serif text-primary tracking-tighter">Reservas.</h1>
-				<p class="text-lg md:text-xl text-muted font-sans mt-4 max-w-xl">
-					Inicia tu viaje hacia el descanso consciente. Configura las fechas de tu estadía y complementa tu inmersión.
-				</p>
-			</div>
-
 			<!-- Layout estructural: 65% izquierda (Calendario/Opciones), 35% derecha (Sidebar Sticky) -->
 			<div class="flex flex-col lg:flex-row gap-12 items-start relative">
 				
@@ -43,63 +44,81 @@ const complementaryExperiences = [
 							1. Selección de Estadía
 						</h3>
 
+						<!-- Selector de Refugio / Habitación (Dropdown Personalizado Premium) -->
+						<div class="space-y-2 relative">
+							<label class="text-[10px] font-bold uppercase tracking-widest text-primary">Cabaña o Refugio</label>
+							
+							<!-- Disparador del Dropdown -->
+							<button id="custom-dropdown-btn" type="button" class="w-full p-4 pr-12 border border-hairline dark:border-dark-hairline bg-surface-soft dark:bg-dark-surface-soft text-ink dark:text-dark-ink font-sans rounded-sm text-sm font-semibold flex justify-between items-center cursor-pointer select-none transition-all duration-300 outline-none focus:border-primary dark:focus:border-dark-primary text-left">
+								<span id="custom-dropdown-value">Eco-Suite Rainforest — $300.00 / noche</span>
+								<svg id="custom-dropdown-arrow" class="h-4 w-4 text-muted dark:text-dark-muted transition-transform duration-300 fill-current" viewBox="0 0 20 20">
+									<path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+								</svg>
+							</button>
+
+							<!-- Panel de Opciones Desplegable -->
+							<div id="custom-dropdown-menu" class="absolute w-full left-0 mt-1.5 hidden z-50 rounded-sm border border-hairline dark:border-dark-hairline bg-canvas dark:bg-dark-surface shadow-2xl overflow-hidden py-1 transition-all duration-300 scale-95 opacity-0 origin-top">
+								<div class="custom-dropdown-option p-4 text-sm font-semibold text-ink dark:text-dark-ink hover:bg-primary/10 dark:hover:bg-dark-primary/10 hover:text-primary dark:hover:text-dark-primary cursor-pointer select-none flex justify-between items-center transition-colors" data-value="rainforest">
+									<span>Eco-Suite Rainforest</span>
+									<span class="text-xs text-primary font-bold">$300.00 / noche</span>
+								</div>
+								<div class="custom-dropdown-option p-4 text-sm font-semibold text-ink dark:text-dark-ink hover:bg-primary/10 dark:hover:bg-dark-primary/10 hover:text-primary dark:hover:text-dark-primary cursor-pointer select-none flex justify-between items-center transition-colors border-t border-hairline/60 dark:border-dark-hairline/60" data-value="nido-viento">
+									<span>Nido del Viento Glamping</span>
+									<span class="text-xs text-primary font-bold">$250.00 / noche</span>
+								</div>
+								<div class="custom-dropdown-option p-4 text-sm font-semibold text-ink dark:text-dark-ink hover:bg-primary/10 dark:hover:bg-dark-primary/10 hover:text-primary dark:hover:text-dark-primary cursor-pointer select-none flex justify-between items-center transition-colors border-t border-hairline/60 dark:border-dark-hairline/60" data-value="domo-ancestral">
+									<span>Domo Ancestral</span>
+									<span class="text-xs text-primary font-bold">$280.00 / noche</span>
+								</div>
+							</div>
+						</div>
+
 						<!-- Inputs de Llegada y Salida -->
 						<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
 							<div class="space-y-2">
 								<label class="text-[10px] font-bold uppercase tracking-widest text-primary">Llegada</label>
-								<div class="w-full p-4 border border-hairline dark:border-dark-hairline bg-surface-soft dark:bg-dark-surface-soft text-ink dark:text-dark-ink font-sans rounded-sm text-sm font-semibold">
+								<div id="checkin-display" class="w-full p-4 border border-hairline dark:border-dark-hairline bg-surface-soft dark:bg-dark-surface-soft text-ink dark:text-dark-ink font-sans rounded-sm text-sm font-semibold transition-all duration-300">
 									14 Oct. 2024 (Check-In)
 								</div>
 							</div>
 							<div class="space-y-2">
 								<label class="text-[10px] font-bold uppercase tracking-widest text-primary">Salida</label>
-								<div class="w-full p-4 border border-hairline dark:border-dark-hairline bg-surface-soft dark:bg-dark-surface-soft text-ink dark:text-dark-ink font-sans rounded-sm text-sm font-semibold">
+								<div id="checkout-display" class="w-full p-4 border border-hairline dark:border-dark-hairline bg-surface-soft dark:bg-dark-surface-soft text-ink dark:text-dark-ink font-sans rounded-sm text-sm font-semibold transition-all duration-300">
 									20 Oct. 2024 (Check-Out)
 								</div>
 							</div>
 						</div>
 
-						<!-- Calendario Mockup Interactivo -->
+						<!-- Calendario Interactivo -->
 						<div class="pt-4">
 							<div class="flex justify-between items-center mb-6">
-								<h4 class="text-base font-serif font-bold text-ink">Octubre 2024</h4>
+								<h4 id="calendar-month-year" class="text-base font-serif font-bold text-ink">Octubre 2024</h4>
 								<div class="flex gap-2">
-									<button class="h-8 w-8 border border-hairline dark:border-dark-hairline rounded-full flex items-center justify-center text-ink hover:bg-surface-soft dark:hover:bg-dark-surface-soft transition-colors">&larr;</button>
-									<button class="h-8 w-8 border border-hairline dark:border-dark-hairline rounded-full flex items-center justify-center text-ink hover:bg-surface-soft dark:hover:bg-dark-surface-soft transition-colors">&rarr;</button>
+									<button id="prev-month" class="h-8 w-8 border border-hairline dark:border-dark-hairline rounded-full flex items-center justify-center text-ink hover:bg-surface-soft dark:hover:bg-dark-surface-soft transition-colors cursor-pointer select-none">&larr;</button>
+									<button id="next-month" class="h-8 w-8 border border-hairline dark:border-dark-hairline rounded-full flex items-center justify-center text-ink hover:bg-surface-soft dark:hover:bg-dark-surface-soft transition-colors cursor-pointer select-none">&rarr;</button>
 								</div>
 							</div>
 							
-							<div class="grid grid-cols-7 gap-1.5 text-center text-xs font-sans">
-								<!-- Días de la semana -->
-								{['D', 'L', 'M', 'M', 'J', 'V', 'S'].map(d => (
-									<div class="font-bold text-muted py-2 select-none">{d}</div>
-								))}
-								
-								<!-- Espacios vacíos para iniciar el mes -->
-								<div class="py-3"></div>
-								<div class="py-3"></div>
-								
-								<!-- Días del mes con rango seleccionado (14 al 20) -->
-								{Array.from({ length: 31 }).map((_, i) => {
-									const day = i + 1;
-									const isSelected = day >= 14 && 20 >= day;
-									const isEdge = (day === 14 || day === 20);
-									
-									return (
-										<div 
-											class:list={[
-												"py-3.5 rounded-sm transition-all duration-300 cursor-pointer font-semibold",
-												isSelected 
-													? isEdge 
-														? "bg-primary text-white scale-105 font-bold shadow-md"
-														: "bg-accent/25 dark:bg-dark-accent/20 text-primary dark:text-dark-primary"
-													: "text-ink hover:bg-surface-soft dark:hover:bg-dark-surface-soft"
-											]}
-										>
-											{day}
-										</div>
-									);
-								})}
+							<div id="calendar-grid" class="grid grid-cols-7 gap-1.5 text-center text-xs font-sans">
+								<!-- Se genera dinámicamente en el cliente mediante script -->
+							</div>
+
+							<!-- Leyenda del Calendario -->
+							<div class="mt-6 flex flex-wrap gap-x-6 gap-y-2 justify-start items-center text-[10px] uppercase tracking-widest font-sans text-muted dark:text-dark-muted border-t border-hairline/60 dark:border-dark-hairline/60 pt-6 select-none font-bold">
+								<div class="flex items-center gap-2">
+									<span class="w-2.5 h-2.5 rounded-full bg-primary block shadow-sm"></span>
+									<span>Tu Estadía</span>
+								</div>
+								<div class="flex items-center gap-2">
+									<span class="w-2.5 h-2.5 rounded-full bg-accent dark:bg-dark-accent block shadow-sm"></span>
+									<span>Alta Demanda</span>
+								</div>
+								<div class="flex items-center gap-2">
+									<span class="w-2.5 h-2.5 rounded-sm bg-surface-soft/80 dark:bg-dark-surface-soft/40 border border-hairline dark:border-dark-hairline block flex items-center justify-center">
+										<span class="w-1.5 h-[1.5px] bg-muted/40 block"></span>
+									</span>
+									<span class="line-through text-muted/50 dark:text-dark-muted/40">Completo</span>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -139,39 +158,39 @@ const complementaryExperiences = [
 
 						<!-- Foto de Cabaña Seleccionada -->
 						<div class="aspect-video rounded-md overflow-hidden bg-surface-soft select-none border border-hairline/60 dark:border-dark-hairline/60">
-							<img src={selectedRoom.image} alt={selectedRoom.title} class="w-full h-full object-cover" />
+							<img id="summary-room-image" src={selectedRoom.image} alt={selectedRoom.title} class="w-full h-full object-cover transition-opacity duration-300" />
 						</div>
 
 						<div class="space-y-4 font-sans select-none">
 							<!-- Nombre e Info de cabaña -->
 							<div class="flex justify-between items-start">
 								<div>
-									<h4 class="font-bold text-sm text-ink">{selectedRoom.title}</h4>
-									<p class="text-[11px] text-muted font-medium mt-1">{selectedRoom.details}</p>
+									<h4 id="summary-room-title" class="font-bold text-sm text-ink">{selectedRoom.title}</h4>
+									<p id="summary-details" class="text-[11px] text-muted font-medium mt-1">{selectedRoom.details}</p>
 								</div>
-								<span class="text-base font-serif font-bold text-primary">{selectedRoom.pricePerNight}</span>
+								<span id="summary-room-price" class="text-base font-serif font-bold text-primary">{selectedRoom.pricePerNight}</span>
 							</div>
 
 							<!-- Tasas e Impuestos -->
 							<div class="pt-4 border-t border-hairline/60 dark:border-dark-hairline/60 space-y-3 text-xs text-muted font-medium">
 								<div class="flex justify-between">
 									<span>Tasa de Sostenibilidad Regenerativa</span>
-									<span class="text-ink">{selectedRoom.sustainabilityTax}</span>
+									<span id="summary-tax" class="text-ink">{selectedRoom.sustainabilityTax}</span>
 								</div>
 								<div class="flex justify-between">
 									<span>Impuestos de Preservación e IVA</span>
-									<span class="text-ink">{selectedRoom.taxes}</span>
+									<span id="summary-vat" class="text-ink">{selectedRoom.taxes}</span>
 								</div>
 							</div>
 
 							<!-- Total General -->
 							<div class="pt-4 border-t border-hairline dark:border-dark-hairline flex justify-between items-center text-xl font-serif font-bold text-primary">
 								<span>Total</span>
-								<span>{selectedRoom.total}</span>
+								<span id="summary-total">{selectedRoom.total}</span>
 							</div>
 
 							<!-- Botón de Conversión de reserva instantánea en Amarillo Vibrante -->
-							<Button variant="conversion" class="w-full py-6 text-xs mt-4 uppercase tracking-widest font-bold shadow-lg">
+							<Button id="confirm-btn" variant="conversion" class="w-full py-6 text-xs mt-4 uppercase tracking-widest font-bold shadow-lg">
 								Confirmar Reserva
 							</Button>
 
@@ -190,11 +209,34 @@ const complementaryExperiences = [
 		<div class="lg:hidden fixed bottom-0 left-0 w-full bg-canvas border-t border-hairline p-4 z-50 flex items-center justify-between shadow-2xl transition-colors duration-500 select-none mobile-booking-bar">
 			<div>
 				<span class="block text-[9px] uppercase font-bold text-muted tracking-wider">Total Estancia</span>
-				<span class="text-lg font-serif font-bold text-primary">{selectedRoom.total}</span>
+				<span id="mobile-summary-total" class="text-lg font-serif font-bold text-primary">{selectedRoom.total}</span>
 			</div>
-			<Button variant="conversion" class="h-10 px-6 text-xs uppercase tracking-widest font-bold">
+			<Button id="mobile-confirm-btn" variant="conversion" class="h-10 px-6 text-xs uppercase tracking-widest font-bold">
 				Reservar
 			</Button>
+		</div>
+		<!-- Modal de Confirmación de Reserva Premium (Oculto inicialmente) -->
+		<div id="success-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 select-none">
+			<!-- Fondo oscurecido con Blur sutil -->
+			<div class="absolute inset-0 bg-dark-canvas/80 backdrop-blur-md transition-opacity duration-300"></div>
+			
+			<!-- Contenedor del Mensaje -->
+			<div id="success-modal-content" class="bg-canvas dark:bg-dark-surface border border-accent/20 dark:border-dark-accent/25 rounded-md p-8 md:p-12 max-w-md w-full text-center relative z-10 shadow-[0_0_40px_rgba(247,221,22,0.25)] dark:shadow-[0_0_55px_rgba(249,227,67,0.18)] scale-95 opacity-0 transition-all duration-300 transform">
+				<!-- Icono Check Ancestral / Orgánico -->
+				<div class="mx-auto w-16 h-16 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-6 text-3xl font-bold shadow-sm">
+					✓
+				</div>
+				
+				<h3 class="text-2xl font-serif font-bold text-ink mb-3">¡Reserva Confirmada!</h3>
+				<p id="success-modal-text" class="text-sm font-sans text-body leading-relaxed mb-8">
+					Felicidades, tu refugio ancestral ha sido reservado con éxito.
+				</p>
+				
+				<!-- Botón de Cierre -->
+				<Button id="close-success-btn" variant="primary" class="w-full py-4 text-xs uppercase tracking-widest font-bold">
+					Comenzar el Viaje
+				</Button>
+			</div>
 		</div>
 	</main>
 </Layout>
@@ -202,15 +244,20 @@ const complementaryExperiences = [
 <script>
 	import { gsap } from 'gsap';
 	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+	import confetti from 'canvas-confetti';
 	
 	gsap.registerPlugin(ScrollTrigger);
 
-	// Animaciones de carga
-	gsap.from(".booking-header", { opacity: 0, y: -20, duration: 0.8, ease: "power2.out" });
-	gsap.from(".booking-form-container", { opacity: 0, x: -40, duration: 1, delay: 0.2, ease: "power2.out" });
-	gsap.from(".booking-sidebar", { opacity: 0, x: 40, duration: 1, delay: 0.2, ease: "power2.out" });
+	// 1. Animaciones Hero Estandarizadas
+	gsap.from(".hero-tag", { opacity: 0, y: -20, duration: 0.8, ease: "power2.out" });
+	gsap.from(".hero-title", { opacity: 0, y: 30, duration: 1.2, delay: 0.2, ease: "power3.out" });
+	gsap.from(".hero-desc", { opacity: 0, y: 20, duration: 1, delay: 0.4, ease: "power2.out" });
 
-	// Animaciones de los complementos al hacer scroll (Stagger)
+	// 2. Animaciones de carga de los paneles
+	gsap.from(".booking-form-container", { opacity: 0, x: -40, duration: 1, delay: 0.4, ease: "power2.out" });
+	gsap.from(".booking-sidebar", { opacity: 0, x: 40, duration: 1, delay: 0.4, ease: "power2.out" });
+
+	// 3. Animaciones de los complementos al hacer scroll (Stagger)
 	gsap.from(".addon-item", {
 		scrollTrigger: {
 			trigger: ".addon-section",
@@ -231,4 +278,420 @@ const complementaryExperiences = [
 		delay: 1,
 		ease: "power3.out"
 	});
+
+	// 4. Lógica de Calendario Interactivo en el Cliente
+	const months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+	let currentYear = 2024;
+	let currentMonth = 9; // Octubre (0-indexed: 9)
+
+	// Catálogo de Habitaciones con nombres, precios e imágenes optimizadas
+	const roomsData = {
+		"rainforest": {
+			title: "ECO-SUITE RAINFOREST",
+			pricePerNight: 300.00,
+			image: "https://images.unsplash.com/photo-1587061949409-02df41d5e562?auto=format&fit=crop&q=80&w=600"
+		},
+		"nido-viento": {
+			title: "NIDO DEL VIENTO GLAMPING",
+			pricePerNight: 250.00,
+			image: "https://images.unsplash.com/photo-1533759413974-9e15f3b745ac?auto=format&fit=crop&q=80&w=600"
+		},
+		"domo-ancestral": {
+			title: "DOMO ANCESTRAL",
+			pricePerNight: 280.00,
+			image: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&q=80&w=600"
+		}
+	};
+
+	let currentRoomId = "rainforest";
+
+	// Fechas seleccionadas (Check-In inicial: 14 Oct 2024, Check-Out: 20 Oct 2024)
+	let checkInDate = new Date(2024, 9, 14);
+	let checkOutDate = new Date(2024, 9, 20);
+
+	const monthYearEl = document.getElementById("calendar-month-year");
+	const gridEl = document.getElementById("calendar-grid");
+	const prevBtn = document.getElementById("prev-month");
+	const nextBtn = document.getElementById("next-month");
+	const checkInDisplay = document.getElementById("checkin-display");
+	const checkOutDisplay = document.getElementById("checkout-display");
+	
+	// Referencias Custom Dropdown
+	const dropdownBtn = document.getElementById("custom-dropdown-btn");
+	const dropdownMenu = document.getElementById("custom-dropdown-menu");
+	const dropdownArrow = document.getElementById("custom-dropdown-arrow");
+	const dropdownValue = document.getElementById("custom-dropdown-value");
+	const dropdownOptions = document.querySelectorAll(".custom-dropdown-option");
+
+	// Días con reservas completas y alto flujo de personas (Mismo patrón consistente en cada mes)
+	const occupiedDays = [4, 5, 6, 11, 12, 25, 26];
+	const highFlowDays = [13, 21, 22, 27, 28];
+
+	const formatDate = (date, suffix) => {
+		if (!date) return "Seleccionar fecha";
+		const day = date.getDate();
+		const monthStr = months[date.getMonth()].substring(0, 3);
+		const year = date.getFullYear();
+		return `${day} ${monthStr}. ${year} ${suffix}`;
+	};
+
+	const updateRoomDetails = () => {
+		const room = roomsData[currentRoomId];
+		if (!room) return;
+
+		const roomTitleEl = document.getElementById("summary-room-title");
+		const roomImageEl = document.getElementById("summary-room-image");
+		const roomPriceEl = document.getElementById("summary-room-price");
+
+		if (roomTitleEl) roomTitleEl.textContent = room.title;
+		if (roomPriceEl) roomPriceEl.textContent = `$${room.pricePerNight.toFixed(2)}`;
+		if (roomImageEl) {
+			roomImageEl.style.opacity = "0.2";
+			setTimeout(() => {
+				roomImageEl.setAttribute("src", room.image);
+				roomImageEl.setAttribute("alt", room.title);
+				roomImageEl.style.opacity = "1";
+			}, 150);
+		}
+		
+		if (dropdownValue) {
+			const formattedName = currentRoomId === "rainforest" ? "Eco-Suite Rainforest — $300.00 / noche" :
+			                      currentRoomId === "nido-viento" ? "Nido del Viento Glamping — $250.00 / noche" :
+			                      "Domo Ancestral — $280.00 / noche";
+			dropdownValue.textContent = formattedName;
+		}
+	};
+
+	const updateBookingSummary = () => {
+		if (checkInDisplay) checkInDisplay.textContent = formatDate(checkInDate, "(Check-In)");
+		if (checkOutDisplay) checkOutDisplay.textContent = formatDate(checkOutDate, "(Check-Out)");
+
+		const summaryDetails = document.getElementById("summary-details");
+		const summaryTax = document.getElementById("summary-tax");
+		const summaryVat = document.getElementById("summary-vat");
+		const summaryTotal = document.getElementById("summary-total");
+		const mobileTotal = document.getElementById("mobile-summary-total");
+		const confirmBtn = document.getElementById("confirm-btn");
+
+		const room = roomsData[currentRoomId];
+		const pricePerNight = room ? room.pricePerNight : 300.00;
+
+		if (!checkInDate || !checkOutDate) {
+			if (summaryDetails) summaryDetails.textContent = "Selecciona tus fechas";
+			if (summaryTax) summaryTax.textContent = "$0.00";
+			if (summaryVat) summaryVat.textContent = "$0.00";
+			if (summaryTotal) summaryTotal.textContent = "$0.00";
+			if (mobileTotal) mobileTotal.textContent = "$0.00";
+			
+			if (confirmBtn) {
+				confirmBtn.textContent = "Selecciona Fechas";
+				confirmBtn.classList.add("opacity-50", "cursor-not-allowed");
+				confirmBtn.classList.remove("hover:scale-105");
+			}
+			return;
+		}
+
+		// Calcular noches
+		const timeDiff = checkOutDate.getTime() - checkInDate.getTime();
+		const nights = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+		const taxPerNight = 7.50;
+		const vatRate = 0.19;
+
+		const subtotal = pricePerNight * nights;
+		const sustTax = taxPerNight * nights;
+		const vat = subtotal * vatRate;
+		const total = subtotal + sustTax + vat;
+
+		const formatCurrency = (val) => {
+			return `$${val.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+		};
+
+		if (summaryDetails) summaryDetails.textContent = `${nights} Noches / 2 Adultos`;
+		if (summaryTax) summaryTax.textContent = formatCurrency(sustTax);
+		if (summaryVat) summaryVat.textContent = formatCurrency(vat);
+		if (summaryTotal) summaryTotal.textContent = formatCurrency(total);
+		if (mobileTotal) mobileTotal.textContent = formatCurrency(total);
+
+		if (confirmBtn) {
+			confirmBtn.textContent = "Confirmar Reserva";
+			confirmBtn.classList.remove("opacity-50", "cursor-not-allowed");
+			confirmBtn.classList.add("hover:scale-105");
+		}
+	};
+
+	const renderCalendar = (year, month) => {
+		if (!gridEl || !monthYearEl) return;
+
+		// Actualizar mes y año
+		monthYearEl.textContent = `${months[month]} ${year}`;
+
+		// Limpiar grilla
+		gridEl.innerHTML = "";
+
+		// Pintar Días de la semana fijos
+		const daysOfWeek = ['D', 'L', 'M', 'M', 'J', 'V', 'S'];
+		daysOfWeek.forEach(d => {
+			const dayLabel = document.createElement("div");
+			dayLabel.className = "font-bold text-muted py-2 select-none";
+			dayLabel.textContent = d;
+			gridEl.appendChild(dayLabel);
+		});
+
+		// Obtener primer día de semana del mes
+		const firstDayIndex = new Date(year, month, 1).getDay();
+		// Obtener total de días del mes
+		const totalDays = new Date(year, month + 1, 0).getDate();
+
+		// Celdas vacías al inicio (Evitar carac. menor que en el loop)
+		for (let i = 0; firstDayIndex > i; i++) {
+			const emptyCell = document.createElement("div");
+			emptyCell.className = "py-3 select-none";
+			gridEl.appendChild(emptyCell);
+		}
+
+		// Pintar días del mes (Evitar carac. menor que en el loop)
+		for (let day = 1; totalDays >= day; day++) {
+			const dayCell = document.createElement("div");
+			dayCell.textContent = day.toString();
+
+			const thisDate = new Date(year, month, day);
+			const isCheckIn = checkInDate && thisDate.toDateString() === checkInDate.toDateString();
+			const isCheckOut = checkOutDate && thisDate.toDateString() === checkOutDate.toDateString();
+			const isSelected = checkInDate && checkOutDate && thisDate > checkInDate && checkOutDate > thisDate;
+			const isEdge = isCheckIn || isCheckOut;
+
+			const isOccupied = occupiedDays.includes(day);
+			const isHighFlow = highFlowDays.includes(day);
+
+			// Clases de Tailwind premium para cada celda
+			let cellClasses = "py-3 rounded-sm transition-all duration-300 font-semibold select-none text-xs relative flex flex-col items-center justify-center ";
+
+			if (isOccupied) {
+				cellClasses += "text-muted/30 dark:text-dark-muted/20 bg-surface-soft/40 dark:bg-dark-surface-soft/10 cursor-not-allowed line-through";
+				dayCell.setAttribute("title", "Reservas Completas (No disponible)");
+			} else if (isEdge) {
+				cellClasses += "bg-primary text-white font-bold scale-105 shadow-md cursor-pointer z-10";
+				if (isCheckIn) {
+					dayCell.setAttribute("title", "Tu Llegada (Check-In)");
+				} else {
+					dayCell.setAttribute("title", "Tu Salida (Check-Out)");
+				}
+			} else if (isSelected) {
+				cellClasses += "bg-primary/15 text-primary dark:bg-dark-primary/10 dark:text-dark-primary cursor-pointer rounded-none";
+				dayCell.setAttribute("title", "Día de tu estadía");
+			} else if (isHighFlow) {
+				// Sombreado de alto flujo con fondo ámbar translúcido y borde inferior amarillo vibrante
+				cellClasses += "bg-accent/10 border-b-[2.5px] border-accent dark:bg-dark-accent/10 dark:border-dark-accent hover:bg-accent/20 dark:hover:bg-dark-accent/20 cursor-pointer text-ink dark:text-dark-ink";
+				dayCell.setAttribute("title", "Alto Flujo / Alta Demanda");
+			} else {
+				cellClasses += "text-ink dark:text-dark-ink hover:bg-surface-soft dark:hover:bg-dark-surface-soft cursor-pointer";
+				dayCell.setAttribute("title", "Disponible");
+			}
+
+			dayCell.className = cellClasses;
+
+			if (!isOccupied) {
+				dayCell.addEventListener("click", () => {
+					if ((checkInDate && checkOutDate) || !checkInDate) {
+						checkInDate = thisDate;
+						checkOutDate = null;
+					} else {
+						if (thisDate.getTime() === checkInDate.getTime()) {
+							checkInDate = null;
+							checkOutDate = null;
+						} else if (checkInDate > thisDate) {
+							checkInDate = thisDate;
+							checkOutDate = null;
+						} else {
+							checkOutDate = thisDate;
+						}
+					}
+					renderCalendar(currentYear, currentMonth);
+					updateBookingSummary();
+				});
+			}
+
+			gridEl.appendChild(dayCell);
+		}
+	};
+
+	// Event Listeners de navegación de meses (Evitar carac. menor que en comparaciones)
+	prevBtn?.addEventListener("click", () => {
+		currentMonth--;
+		if (0 > currentMonth) {
+			currentMonth = 11;
+			currentYear--;
+		}
+		renderCalendar(currentYear, currentMonth);
+	});
+
+	nextBtn?.addEventListener("click", () => {
+		currentMonth++;
+		if (currentMonth > 11) {
+			currentMonth = 0;
+			currentYear++;
+		}
+		renderCalendar(currentYear, currentMonth);
+	});
+
+	// Leer query parameters de la URL al cargar la página
+	const urlParams = new URLSearchParams(window.location.search);
+	const roomParam = urlParams.get("room");
+	if (roomParam && roomsData[roomParam]) {
+		currentRoomId = roomParam;
+	}
+
+	// Lógica de apertura/cierre del Custom Dropdown
+	const toggleDropdown = (show) => {
+		if (!dropdownMenu || !dropdownArrow) return;
+		
+		const isHidden = dropdownMenu.classList.contains("hidden");
+		const shouldShow = show === undefined ? isHidden : show;
+
+		if (shouldShow) {
+			dropdownMenu.classList.remove("hidden");
+			// Forzar reflujo para animación
+			dropdownMenu.offsetHeight;
+			dropdownMenu.classList.remove("scale-95", "opacity-0");
+			dropdownMenu.classList.add("scale-100", "opacity-100");
+			dropdownArrow.classList.add("rotate-180");
+		} else {
+			dropdownMenu.classList.remove("scale-100", "opacity-100");
+			dropdownMenu.classList.add("scale-95", "opacity-0");
+			dropdownArrow.classList.remove("rotate-180");
+			setTimeout(() => {
+				if (dropdownMenu.classList.contains("opacity-0")) {
+					dropdownMenu.classList.add("hidden");
+				}
+			}, 150);
+		}
+	};
+
+	dropdownBtn?.addEventListener("click", (e) => {
+		e.stopPropagation();
+		toggleDropdown();
+	});
+
+	// Cerrar al hacer clic fuera
+	document.addEventListener("click", (e) => {
+		if (dropdownMenu && !dropdownMenu.classList.contains("hidden") && dropdownBtn && !dropdownBtn.contains(e.target)) {
+			toggleDropdown(false);
+		}
+	});
+
+	// Escuchar clics en las opciones del menú
+	dropdownOptions.forEach(opt => {
+		opt.addEventListener("click", (e) => {
+			e.stopPropagation();
+			const val = opt.getAttribute("data-value");
+			if (val) {
+				currentRoomId = val;
+				updateRoomDetails();
+				updateBookingSummary();
+				toggleDropdown(false);
+			}
+		});
+	});
+
+	// Referencias Modal de Confirmación
+	const successModal = document.getElementById("success-modal");
+	const successModalContent = document.getElementById("success-modal-content");
+	const successModalText = document.getElementById("success-modal-text");
+	const closeSuccessBtn = document.getElementById("close-success-btn");
+	const confirmBtn = document.getElementById("confirm-btn");
+	const mobileConfirmBtn = document.getElementById("mobile-confirm-btn");
+
+	const getFormattedRange = () => {
+		if (!checkInDate || !checkOutDate) return "";
+		const startDay = checkInDate.getDate();
+		const startMonth = months[checkInDate.getMonth()];
+		const startYear = checkInDate.getFullYear();
+		
+		const endDay = checkOutDate.getDate();
+		const endMonth = months[checkOutDate.getMonth()];
+		const endYear = checkOutDate.getFullYear();
+
+		if (startMonth === endMonth && startYear === endYear) {
+			return startDay + " al " + endDay + " de " + startMonth + " de " + startYear;
+		}
+		return startDay + " de " + startMonth + " al " + endDay + " de " + endMonth + " de " + endYear;
+	};
+
+	const processBooking = () => {
+		if (!checkInDate || !checkOutDate) return;
+
+		const room = roomsData[currentRoomId];
+		const roomTitle = room ? room.title : "ECO-SUITE RAINFOREST";
+		const dateRange = getFormattedRange();
+
+		if (successModalText) {
+			successModalText.innerHTML = "Felicidades, reserva hecha para los días <strong class='text-primary font-bold'>" + dateRange + "</strong> en tu <strong class='text-primary font-bold'>" + roomTitle + "</strong>.<br><br>Prepárate para una inmersión absoluta en el silencio consciente del bosque.";
+		}
+
+		if (successModal && successModalContent) {
+			successModal.classList.remove("hidden");
+			successModal.classList.add("flex");
+			
+			gsap.to(successModalContent, {
+				scale: 1,
+				opacity: 1,
+				duration: 0.5,
+				ease: "back.out(1.7)"
+			});
+		}
+
+		// Disparar Confeti de Lujo
+		confetti({
+			particleCount: 150,
+			spread: 80,
+			origin: { y: 0.6 }
+		});
+
+		setTimeout(() => {
+			confetti({
+				particleCount: 50,
+				angle: 60,
+				spread: 55,
+				origin: { x: 0 }
+			});
+		}, 200);
+
+		setTimeout(() => {
+			confetti({
+				particleCount: 50,
+				angle: 120,
+				spread: 55,
+				origin: { x: 1 }
+			});
+		}, 400);
+	};
+
+	confirmBtn?.addEventListener("click", () => {
+		processBooking();
+	});
+
+	mobileConfirmBtn?.addEventListener("click", () => {
+		processBooking();
+	});
+
+	closeSuccessBtn?.addEventListener("click", () => {
+		if (successModal && successModalContent) {
+			gsap.to(successModalContent, {
+				scale: 0.95,
+				opacity: 0,
+				duration: 0.3,
+				ease: "power2.in",
+				onComplete: () => {
+					successModal.classList.remove("flex");
+					successModal.classList.add("hidden");
+				}
+			});
+		}
+	});
+
+	// Renderizar inicialmente al cargar la página
+	updateRoomDetails();
+	renderCalendar(currentYear, currentMonth);
+	updateBookingSummary();
 </script>
